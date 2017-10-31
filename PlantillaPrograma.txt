@@ -1,0 +1,24 @@
+/*
+CLASE
+	FUNCIONAMIENTO
+        * Breve explicacion del programa
+
+    ANALISIS
+        * Analisis del problema
+
+	REQUISITOS
+	   	* Requisito 1
+        * Requisito 2
+
+	ENTRADAS
+		* Datos de entrada
+
+	SALIDAS
+		* Datos de salida
+
+	RESTRICCIONES
+        * Restricciones del programa
+
+	SUPOSICIONES
+        * Suposiciones del programa
+*/
