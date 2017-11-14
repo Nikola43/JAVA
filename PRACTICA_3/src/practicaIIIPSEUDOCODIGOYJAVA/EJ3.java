@@ -7,10 +7,9 @@
         obtienen deben ser diferentes (no pueden salir repetidos).
 
     REQUISITOS:
-
-        -> Se debe leer por teclado seis numeros que el usuario introduce
-        -> Se debe generar seis numeros aleatorios
-        -> Se debe comprobar cuantos numeros aleatorios coinciden con los que introdujo el usuario
+        -> Se debe guardar seis numeros enteros que el usuario introduce
+        -> Se debe generar seis numeros enteros aleatorios
+        -> Se debe comprobar si cada numero aleatorio generado es igual a cualquiera de los que introdujo el usuario
 
     RESTRICCIONES:
         -> El numero aleatorio generado debe estar entre 1 y 49
@@ -26,6 +25,7 @@
         ENTERO numeroAleatorio
         ENTERO contadorNumerosIntroducidos
         ENTERO contadorNumerosAleatoriosGenerados
+        ENTERO contadorAciertos = 0
 
     CONSTANTES:
         ENTERO MIN_NUMERO_ALEATORIO = 1
@@ -57,55 +57,48 @@
         //Generamos seis numeros aleatorios y vamos comprobando los aciertos
         DESDE(contadorNumerosAleatoriosGenerados = 1, contadorNumerosAleatoriosGenerados < 6, contadorNumerosAleatoriosGenerados++)
 
+            numeroAleatorio = random(MAX_NUMERO_ALEATORIO, MIN_NUMERO_ALEATORIO)
+
+            SEGUN(contadorNumerosAleatoriosGenerados)
+                PARA (contadorNumerosAleatoriosGenerados == 1 )
+                    SI (numeroAleatorio == num1)
+
+                    FSI
+                PARA (contadorNumerosAleatoriosGenerados == 2 )
+                    SI (numeroAleatorio == num2)
+
+                    FSI
+                PARA (contadorNumerosAleatoriosGenerados == 3 )
+                    SI (numeroAleatorio == num3)
+
+                    FSI
+                PARA (contadorNumerosAleatoriosGenerados == 4 )
+                    SI (numeroAleatorio == num4)
+
+                    FSI
+                PARA (contadorNumerosAleatoriosGenerados == 5 )
+                    SI (numeroAleatorio == num5)
+
+                    FSI
+                PARA (contadorNumerosAleatoriosGenerados == 6 )
+                    SI (numeroAleatorio == num6)
+
+                    FSI
+            FSEGUN
+
+
+
         FDESDE
     FIN
 
  */
+
 package practicaIIIPSEUDOCODIGOYJAVA;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class EJ3
 {
-    public static void main(String []Args) throws IOException
+    public static void main(String []Args)
     {
-        String numeroHexadecimal  = " ";
-        String numeroActualCadena;
 
-        int numeroDecimal;
-        int numeroActual;
-
-        //Instanciamos un objeto bufferedReader para leer por teclado
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-        //Le pedimos al usuario que introduzca un numero en base decimal
-        System.out.print("Introduce un numero en base decimal: ");
-        numeroDecimal = Integer.parseInt(bufferedReader.readLine());
-
-        while(numeroDecimal > 0)
-        {
-            //Extraemos la ultima cifra
-            numeroActual = numeroDecimal % 16;
-
-            //Segun el valor, ponemos la letra conrrespondiente
-            switch(numeroActual)
-            {
-                case 15: numeroActualCadena = "F"; break;
-                case 14: numeroActualCadena = "E"; break;
-                case 13: numeroActualCadena = "D"; break;
-                case 12: numeroActualCadena = "C"; break;
-                case 11: numeroActualCadena = "B"; break;
-                case 10: numeroActualCadena = "A"; break;
-                default: numeroActualCadena = String.valueOf(numeroActual);
-            }
-
-            //Sumamos el valor al numero hexadecimal
-            numeroHexadecimal = numeroActualCadena + numeroHexadecimal;
-
-            //Eliminamos la ultima cifra
-            numeroDecimal = numeroDecimal / 16;
-        }
-        System.out.println(numeroHexadecimal);
     }
 }

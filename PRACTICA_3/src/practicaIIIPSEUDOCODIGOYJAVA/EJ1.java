@@ -19,7 +19,7 @@
  */
 
 /*
-ALGORITMO PRIMITIVA
+    ALGORITMO
     VARIABLES:
         CADENA diaIntroducido
         ENTERO mesIntroducido, numeroDiasMes = 0, contadorDiasMes = 0, numeroDiasFinalSemana = 0, diaActualSemana
