@@ -27,10 +27,6 @@
         ENTERO contadorNumerosAleatoriosGenerados
         ENTERO contadorAciertos = 0
 
-    CONSTANTES:
-        ENTERO MIN_NUMERO_ALEATORIO = 1
-        ENTERO MAX_NUMERO_ALEATORIO = 49
-
     INICIO
         //Leemos seis numeros
         DESDE(contadorNumerosIntroducidos = 1, contadorNumerosIntroducidos < 6, contadorNumerosIntroducidos++)
