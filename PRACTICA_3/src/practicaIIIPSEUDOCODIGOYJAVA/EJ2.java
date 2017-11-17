@@ -1,63 +1,14 @@
 /*
     FUNCIONAMIENTO:
-        Vamos a simular el juego de “LA PRIMITIVA”. Le pediremos al usuario 6 números entre el 1 y el 49.
-        Una vez el usuario haya escrito sus 6 números, iremos obteniendo números aleatorios entre 1 y 49
-        e indicando al usuario el número de aciertos que lleva con cada número aleatorio sacado.
-        Ten en cuenta que los seis números aleatorios que se
-        obtienen deben ser diferentes (no pueden salir repetidos).
+        Escribe un algoritmo que, a partir de un número entero en decimal, pase dicho número a hexadecimal
+        y lo muestre por pantalla.
 
     REQUISITOS:
+        -> Se debe leer un numero entero desde teclado
+        -> Se debe convertir el numero entero en hexadecimal
+        -> Se debe imprimir el numero una vez convertido en hexadecimal
 
     RESTRICCIONES:
-
- */
-
-/*
-
-    ALGORITMO CONVERSOR_DECIMAL_HEXADECIMAL
-    VARIABLES:
-        CADENA numeroHexadecimal = ""
-        CADENA numeroActualCadena
-        ENTERO numeroDecimal
-        ENTERO numeroActual
-
-    INICIO
-        //Le pedimos al usuario que introduzca un numero en base decimal
-        ESCRIBIR "Introduce un numero en base decimal: "
-        LEER numeroDecimal
-
-        MIENTRAS(numeroDecimal > 0)
-
-            //Extraemos la ultima cifra
-            numeroActual = numeroDecimal % 16
-
-            //Segun el valor, ponemos la letra conrrespondiente
-            SEGUN(numeroActual)
-
-                PARA(numeroActual == 15)
-                    numeroActualCadena = "F"
-                PARA(numeroActual == 14)
-                    numeroActualCadena = "E"
-                PARA(numeroActual == 13)
-                    numeroActualCadena = "D"
-                PARA(numeroActual == 12)
-                    numeroActualCadena = "C"
-                PARA(numeroActual == 11)
-                    numeroActualCadena = "B"
-                PARA(numeroActual == 10)
-                    numeroActualCadena = "A"
-                DEFECTO
-                    numeroActualCadena = numeroActual,""
-            FSEGUN
-
-            //Sumamos el valor al numero hexadecimal
-            numeroHexadecimal = numeroActualCadena + numeroHexadecimal
-
-            //Eliminamos la ultima cifra
-            numeroDecimal = numeroDecimal / 16
-        FMIENTRAS
-        ESCRIBIR numeroHexadecimal
-    FIN
 
  */
 package practicaIIIPSEUDOCODIGOYJAVA;
