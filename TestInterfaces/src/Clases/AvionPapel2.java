@@ -66,11 +66,11 @@ public class AvionPapel2 implements Cloneable, Comparable<AvionPapel2>, IVolador
     @Override
     public AvionPapel2 clone()
     {
-        AvionPapel2 clonAvionPapel = null;
+        AvionPapel2 clonAvionPapel2 = null;
 
         try
         {
-            clonAvionPapel = (AvionPapel2) super.clone();
+            clonAvionPapel2 = (AvionPapel2) super.clone();
         }
         catch (CloneNotSupportedException e)
         {
@@ -80,7 +80,7 @@ public class AvionPapel2 implements Cloneable, Comparable<AvionPapel2>, IVolador
     }
 
     /*
-    CABECERA        -> public int compareTo(AvionPapel2 avionPapel)
+    CABECERA        -> public int compareTo(AvionPapel2 avionPapel2)
     DESCRIPCION     -> Compara el avion que lanza el metodo con el avion pasado por parametro
                        según la suma de sus dimensiones
     ENTRADAS        -> Un objeto del tipo AvionPapel2
