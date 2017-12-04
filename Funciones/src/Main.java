@@ -120,8 +120,8 @@ public class Main
 
         switch (calcular)
         {
-            case 'a' : calculado = 2 * Math.PI * radio * altura; break;          //Area
-            case 'v' : calculado = altura * Math.PI * Math.pow(radio, 2); break; //Volumen
+            case 'a' : calculado = 2 * Math.PI * radio * (radio + altura); break; //Area
+            case 'v' : calculado = altura * Math.PI * Math.pow(radio, 2);  break; //Volumen
         }
 
         return calculado;
