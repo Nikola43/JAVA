@@ -24,8 +24,21 @@ public class Main {
         //6
         cifrasNumero(13433);
 
+        //8
+        System.out.println(f(101));
+
         //9
-        sumaNumeros(5);
+       // sumaNumeros(5);
+
+        /*10. Escribe un algortimo dividirNumeros(Entero a, Entero b) y su correspondiente código en java
+        que devuelva el resultado de dividir a entre b.*/
+        dividirNumeros(3, 6);
+
+    }
+
+    private static int dividirNumeros(int a, int b)
+    {
+        return 3;
     }
 
     /*1. Escribe un algoritmo imprimeNumerosAscendente(Entero n) y su correspondiente código en java
@@ -78,7 +91,7 @@ public class Main {
     que devuelva la base elevada al exponente.*/
     public static int potencia(int base, int exp)
     {
-        return (exp == 0) ? 1 : (( exp > 1 ) ? base * potencia(base,exp - 1) : base);
+        return (exp == 0) ? 1 : (( exp > 1 ) ? base * potencia(base,exp - 1) : 1  );
     }
 
     /*6. Escribe un algoritmo recursivo cifrasNumero(num) que saque las cifras de un número entero en
@@ -90,6 +103,16 @@ public class Main {
 
 
     }
+
+    /*8. ¿Cual es el resultado de esta función para distintos valores de x?*/
+    public static int f(int x)
+    {
+        if ( x > 100 )
+            return (x - 10);
+        else
+            return (f(f(x+11)));
+    }
+
 
     /*9. Escribe un algoritmo sumaNumeros(Entero n) y su correspondiente código en java que devuelva
     la suma de todos los números desde 1 hasta n.*/
