@@ -1,0 +1,95 @@
+<html>
+<head>
+</head>
+<body>
+<h1>INSERT</h1>
+<p>Sentencia para insertar datos en una tabla.</p>
+<table border="1">
+<tr>
+<th>Función</th>
+<th>FORMATO</th>
+</tr>
+<tr>
+	<td>Inserción de una fila</td>
+	<td>
+	<b>INSERT INTO </b>NombreTabla [(columna [, columna] ...)]<br />
+	<b>VALUES</b> (valor [, valor] ...);
+	</td>
+</tr>
+<tr>
+	<td>Inserción multifilas</td>
+	<td>
+	<b>INSERT INTO </b>NombreTabla [(columna [, columna] ...)]<br />
+	<b>SELECT</b> ...;
+	</td>
+</tr>
+</table>
+<h1>UPDATE</h1>
+<p>Sentencia para modificar los datos de una tabla.</p>
+<table border="1">
+<tr>
+<th>Función</th>
+<th>FORMATO</th>
+</tr>
+<tr>
+	<td>Modificación de filas</td>
+	<td>
+	<b>UPDATE </b>NombreTabla<br />
+	<b>SET </b>col1 = valor1, ...,coln = valorn<br />
+	<b>WHERE </b>condición;
+	</td>
+</tr>
+<tr>
+	<td>Modificación de filas con SELECT</td>
+	<td>
+	<b>UPDATE </b>NombreTabla<br />
+	<b>SET </b>col1 = valor1, ...,coln = valorn<br />
+	<b>WHERE </b>colx = (<b>SELECT</b> ...);
+	<br />	<br />
+	<b>UPDATE </b>NombreTabla<br />
+	<b>SET </b>(col1, col2,...) = (<b>SELECT</b> columna1, columna2, ...) <br />
+	<b>WHERE </b>condición;
+	<br /><br />
+	<b>UPDATE </b>NombreTabla<br />
+	<b>SET </b>col1 = (<b>SELECT</b> columna1 ...), col2 = (<b>SELECT</b> columna1 ...), ...<br />
+	<b>WHERE </b>condición;
+	<br /><br />
+	</td>
+</tr>
+</table>
+<h1>DELETE</h1>
+<p>Sentencia para borrar datos de una tabla.</p>
+<table border="1">
+<tr>
+<th>Función</th>
+<th>FORMATO</th>
+</tr>
+<tr>
+	<td>Borrado de filas</td>
+	<td>
+	<b>DELETE FROM </b> NombreTabla <b>WHERE</b> condición;
+	</td>
+</tr>
+</table>
+<h1>TRANSACCIONES</h1>
+<p>Una transacción es una secuencia de una o más sentencias SQL que juntas forman una unidad de trabajo.</p>
+<table border="1">
+<tr>
+<th>Función</th>
+<th>FORMATO</th>
+</tr>
+<tr>
+	<td>Validar los cambios</td>
+	<td>
+	<b>COMMIT</b>;
+	</td>
+</tr>
+<tr>
+	<td>Abortar transacciones</td>
+	<td>
+	<b>ROLLBACK</b>;
+	</td>
+</tr>
+</table>
+</body>
+</html>

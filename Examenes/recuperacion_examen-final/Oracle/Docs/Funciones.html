@@ -1,0 +1,109 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Funciones de valores simples </h1>
+<p>Estas funciones son las más sencillas y trabajan con un único numero, variable o columna de la tabla. </p>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>ABS( n )</td><td>Nos devuelve el valor absoluto de n</td></tr>
+<tr><td>CEIL( n )</td><td>Nos devuelve el valor entero igual o inmediatamente superior a n</td></tr>
+<tr><td>FLOOR( n )</td><td>Nos devuelve el valor entero igual o inmediatamente inferior a n</td></tr>
+<tr><td>MOD(m,n)</td><td>Nos devuelve el resto de la división de m entre n</td></tr>
+<tr><td>POWER(m, exponente)</td><td>Calcula la potencia de m elevado a exponente</td></tr>
+<tr><td>SIGN(valor)</td><td>Nos devuelve el signo de valor</td></tr>
+<tr><td>NVL(valor, expresión)</td><td>Función que nos sustituye valor por expresión siempre que valor sea NULL</td></tr>
+<tr><td>ROUND(número[, m])</td><td>Nos redondea numero a m decimales</td></tr>
+<tr><td>SQRT( n )</td><td>Nos devuelve la raíz cuadrada de n</td></tr>
+<tr><td>TRUNC(número[,m ])</td><td>Trunca los números para que tengan m decimales.</td></tr>
+</table>
+<h1>Funciones de grupos de valores</h1>
+<p>Este tipo de funciones se utilizan principalmente para realizar estadísticas, por lo que los valores nulos no se toman en cuenta.</p>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>AVG( n )</td><td>Nos devuelve la media de n</td></tr>
+<tr><td>COUNT(*|expresión)</td><td>Nos devuelve el número de veces que aparece expresión.</td></tr>
+<tr><td>MAX(expresión)</td><td>Nos devuelve el valor máximo de expresión</td></tr>
+<tr><td>MIN (expresión)</td><td>Nos devuelve el valor mínimo de expresión</td></tr>
+<tr><td>VARIANCE(expresión)</td><td>Nos devuelve la varianza de expresión</td></tr>
+<tr><td>SUM(expresión)</td><td>Nos devuelve la suma de valores de expresión.</td></tr>
+</table>
+<h1>Funciones de listas </h1>
+<p>Estas funciones trabajan con grupos de columnas dentro de una misma fila. </p>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>GREATEST(valor1, valor2,...)</td><td>Obtiene el mayor valor de la lista</td></tr>
+<tr><td>LEAST(valor1, valor2,...)</td><td>Obtiene el menor valor de la lista</td></tr>
+</table>
+<h1>Funciones que devuelven caracteres </h1>
+<p>Este tipo de funciones devuelven un carácter o varios caracteres. </p>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>CHR( n )</td><td>Nos devuelve el carácter cuyo valor en binario es n</td></tr>
+<tr><td>CONCAT(cad1, cad2)</td><td>Nos devuelve cad1 concatenada con cad2</td></tr>
+<tr><td>UPPER(cad)</td><td>Convierte cad a mayúsculas</td></tr>
+<tr><td>LOWER(cad)</td><td>Convierte cad a minúsculas</td></tr>
+<tr><td>LPAD(cad1,n[,cad2])</td><td>Con esta función añadimos caracteres a cad1 por la izquierda hasta una longitud máxima dada por n</td></tr>
+<tr><td>INITCAP(cad)</td><td>Convierte la primera letra de cad a mayúscula</td></tr>
+<tr><td>LTRIM(cad [,set])</td><td>Elimina un conjunto de caracteres a la izquierda de cad, siendo set el conjunto de caracteres a eliminar</td></tr>
+<tr><td>RPAD(cad1, n[,cad2])</td><td>Con esta función añadimos caracteres de la misma forma que con la función LPAD pero esta vez los añadimos a la derecha</td></tr>
+<tr><td>RTRIM(cad[,set])</td><td>Hace lo mismo que LTRIM pero por la derecha</td></tr>
+<tr><td>REPLACE(cad,cadena_buscada [,cadena_sustitucion] )</td><td>Sustituye un conjunto de caracteres de 0 o más caracteres, devuelve cad con cada ocurrencia de cadena_buscada sustituida por cadena_sustitucion</td></tr>
+<tr><td>SUBSTR(cad, m[,n])</td><td>Devuelve la subcadena de cad que abarca desde m hasta el numero de caracteres dados por n.</td></tr>
+<tr><td>TRANSLATE(cad1,cad2,cad3)</td><td>Convierte caracteres de una cadena en caracteres diferentes. Devuelve cad1 con los caracteres encontrados en cad2 y sustituidos por los caracteres de cad3</td></tr>
+</table>
+<h1>Funciones que devuelven valores numéricos</h1>
+<p>Estas funciones nos devuelven números a modo de información.</p>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>ASCII(cad)</td><td>Devuelve el valor ASCII de la primera letra de cad</td></tr>
+<tr><td>INSTR(cad1, cad2[,comienzo[,m]])</td><td>Función que busca un conjunto de caracteres dentro de una cadena. Nos devuelve la posición de cad2 en cad1 empezando a buscar en comienzo</td></tr>
+<tr><td>LENGTH(cad)</td><td>Devuelve en número de caracteres de cad</td></tr>
+</table>
+<h1>Funciones de fecha</h1>
+<p>Dentro de SQL tenemos un tipo de dato denominado DATE. Este campo tiene el siguiente formato predeterminado: <strong>'dd/mm/yy'</strong><br />Este formato lo podemos modificar con la función TO_CHAR que veremos posteriormente.<br />Cabe señalar que el tipo de dato DATE también almacena la siguiente información en el siguiente orden: <strong>Siglo/Año/Mes/Día/Hora/Minutos/Segundos</strong></p> 
+<p>A continuación mostramos una tabla con las funciones para el manejo de fechas en SQL:</p> 
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>SYSDATE</td><td>Devuelve la fecha del sistema</td></tr>
+<tr><td>ADD_MONTHS (fecha, n)</td><td>Devuelve la fecha incrementada en n meses</td></tr>
+<tr><td>LAS_DAY (fecha)</td><td>Devuelve la fecha del último día del mes que contiene fecha</td></tr>
+<tr><td>MONTHS_BETWEEN (fecha1, fecha2)</td><td>Devuelve la diferencia en meses entre la fecha1 y la fecha2</td></tr>
+<tr><td>NEXT_DAY (fecha, cad)</td><td>Devuelve la fecha del primer día de la semana indicado por cad después de la fecha indicada por fecha. Cad será siempre un día de la semana escrito con letras, por ejemplo Monday.</td></tr>
+</table>
+<h1>Funciones de conversión</h1>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>TO_CHAR(fecha,'formato')</td><td>Esta función nos convierte una fecha de tipo date a una fecha de tipo varchar2</td></tr>
+<tr><td>TO_CHAR(numero,'formato')</td><td>Nos convierte un dato de tipo number a un tipo varchar2</td></tr>
+<tr><td>TO_DATE(cad,'formato')</td><td>Convierte un tipo de dato varchar2 o char a un valor de tipo date con el formato especificado</td></tr>
+<tr><td>TO_NUMBER(cadena,['formato'])</td><td>Convierte una cadena a tipo de dato number, y si se le pasa, con el formato especificado</td></tr>
+</table>
+<p>Las distintas marcas para los formatos podéis encontrarlas en el siguiente enlace: <a href="https://docs.oracle.com/cd/B28359_01/server.111/b28286/sql_elements004.htm#SQLRF00210" target="_blank">formatos</a></p>
+<h1>Otras funciones</h1>
+<table border="1">
+<tr>
+<th>Función</th><th>Propósito</th>
+</tr>
+<tr><td>USER</td><td>Nos devuelve el nombre del usuario actual</td></tr>
+<tr><td>VSIZE(expresión)</td><td>Nos devuelve el número de bytes que ocupa la expresión.</td></tr>
+<tr><td>UID</td><td>Nos devuelve el identificador del usuario actual</td></tr>
+<tr><td>DECODE(var,val1,cod1,val2,cod2,valor-por-defecto)</td><td>Función que sustituye un valor por otro. Si var es igual a cualquier val de la lista lo sustituye por su correspondiente cod</td></tr>
+<tr><td>DUMP(cadena,[,formato[,comienzo[,longitud]]])</td><td>Visualiza el valor de cadena desde el comienzo hasta longitud, con el formato especificado.</td></tr>
+</table>
+</body>
+</html>

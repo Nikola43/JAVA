@@ -51,7 +51,7 @@ public class Main {
         char posicionPalabra;
 
         //Mostramos mensaje de bienvenida
-        System.out.println("Bienvenido al juego apalabrados, !Espero que tenga una partida muy divertida¡\n\nCOMIENZA EL JUEGO");
+        System.out.println("Bienvenido al juego apalabrados\n!Espero que tenga una partida muy divertida¡\n\nCOMIENZA EL JUEGO");
 
         //Generamos las palabras para cada jugador
         palabrasJugador1 = repartePalabras(5);
@@ -108,7 +108,6 @@ public class Main {
                 turno = 2;
             else
                 turno = 1;
-
         }
 
     }
@@ -259,15 +258,13 @@ public class Main {
     static void muestraMisPalabras(String [] misPalabras)
     {
         //Ordenamos
-        //ordenaPalabrasRec(misPalabras, misPalabras.length, 0);
+        ordenaPalabrasRec(misPalabras, misPalabras.length, 0);
 
         //Mostramos
         for (int i = 0; i < misPalabras.length; i++)
             System.out.print("PALABRA" + i + ": " + misPalabras[i]+" ");
         System.out.println();
     }
-
-
 
     static boolean puedoColocarPalabra(char [][] tablero, String [] palabrasJugador, int posicionPalabraJugador, int posicionI, int posicionJ,char vertical_horizontal)
     {

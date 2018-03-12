@@ -1,0 +1,98 @@
+<html>
+<head>
+</head>
+<body>
+<ol>
+<h1>Tablas ARTICULOS, FABRICANTES, TIENDAS, PEDIDOS y VENTAS</h1>
+<div>Un almacén de distribución de artículos desea mantener la información sobre las ventas de artículos hechas por las tiendas que compran artículos al almacén. Dispone de las siguientes tablas para mantener la información:<br /><br />
+<b>ARTICULOS</b>: Almacena cada uno de los artículos que el almacén puede suminstrar a las tiendas.
+<pre style="font-weight: bold;">
+Nombre                  Nulo?    Tipo
+----------------------- -------- -------------
+ARTICULO                NOT NULL VARCHAR2(20)
+COD_FABRICANTE          NOT NULL NUMBER(3)
+PESO                    NOT NULL NUMBER(3)
+CATEGORIA               NOT NULL VARCHAR2(10)
+PRECIO_VENTA                     NUMBER(4)
+PRECIO_COSTO                     NUMBER(4)
+EXISTENCIAS                      NUMBER(5)
+</pre>
+Cada artículo viene determinado por las columnas ARTICULO, COD_FABRICANTE, PESO y CATEGORIA. La CATEGORIA puede ser 'Primera', 'Segunda' o 'Tercera'.<br /><br />
+<b>FABRICANTES</b>: Contiene los países de origen de los fabricantes de artículos. Cada COD_FABRICANTE tiene su país.
+<pre style="font-weight: bold;">
+ Nombre                  Nulo?    Tipo
+ ----------------------- -------- ------------
+ COD_FABRICANTE          NOT NULL NUMBER(3)
+ NOMBRE                           VARCHAR2(15)
+ PAIS                             VARCHAR2(15)
+</pre>
+<b>TIENDAS</b>: Almacena los datos de las tiendas que venden artículos. Cada tienda se identifica por su NIF.
+<pre style="font-weight: bold;">
+Nombre                  Nulo?    Tipo
+----------------------- -------- ------------
+NIF                     NOT NULL VARCHAR2(10)
+NOMBRE                           VARCHAR2(20)
+DIRECCION                        VARCHAR2(20)
+POBLACION                        VARCHAR2(20)
+PROVINCIA                        VARCHAR2(20)
+CODPOSTAL                        NUMBER(5)
+</pre>
+<b>PEDIDOS</b>: Son los pedidos que realizan las tiendas al almacén.
+<pre style="font-weight: bold;">
+Nombre                  Nulo?    Tipo
+----------------------- -------- ------------
+NIF                     NOT NULL VARCHAR2(10)
+ARTICULO                NOT NULL VARCHAR2(20)
+COD_FABRICANTE          NOT NULL NUMBER(3)
+PESO                    NOT NULL NUMBER(3)
+CATEGORIA               NOT NULL VARCHAR2(10)
+FECHA_PEDIDO            NOT NULL DATE
+UNIDADES_PEDIDAS                 NUMBER(4)
+</pre>
+Cada pedido se identifica por NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA y FECHA_PEDIDO. Cada fila de la tabla representa un pedido.<br /><br />
+<b>VENTAS</b>: Almacena las ventas de artículos que hace cada una de las tiendas.
+<pre style="font-weight: bold;">
+Nombre                  Nulo?    Tipo
+----------------------- -------- --------------
+NIF                     NOT NULL VARCHAR2(10)
+ARTICULO                NOT NULL VARCHAR2(20)
+COD_FABRICANTE          NOT NULL NUMBER(3)
+PESO                    NOT NULL NUMBER(3)
+CATEGORIA               NOT NULL VARCHAR2(10)
+FECHA_VENTA             NOT NULL DATE
+UNIDADES_VENDIDAS                NUMBER(4)
+</pre>
+Cada venta se identifica por: NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA y FECHA_VENTA. Cada fila de la tabla representa una venta.
+<p>Se pide:</p>
+</div>
+<li>Dar de alta un nuevo artículo de <b>'Primera'</b> categoría para los fabricantes de <b>'FRANCIA'</b> y abastecer con cinco unidades de ese artículo a todas las tiendas y en la fecha de hoy.
+</li><br />
+<li>Insertar un pedido de 20 unidades en la tienda <b>'1111-A'</b> con el artículo que mayor número de ventas haya realizado.
+</li><br />
+<li>Dar de alta una tienda en la provincia de <b>'MADRID'</b> y abastecerla con 20 unidades de cada uno de los artículos existentes.
+</li><br />
+<li>Dar de alta dos tiendas en la provincia de <b>'SEVILLA'</b> y abastecerlas con 30 unidades de artículos del fabricante <b>'GALLO'</b>.
+</li><br />
+<li>Realizar una venta para todas las tiendas de <b>'TOLEDO'</b> de 10 unidades de los artículos de <b>'Primera'</b> categoría.
+</li><br />
+<li>Para aquellos artículos de los que se hayan vendido más de 30 unidades, realizar un pedido de 10 unidades para la tienda con NIF <b>'5555-B'</b> con la fecha actual.
+</li><br />
+<li>Cambiar los datos de la tienda con NIF <b>'1111-A'</b> igualándolos a los de la tienda con NIF <b>'2222-A'</b>.
+</li><br />
+<li>Cambiar todos los artículos de <b>'Primera'</b> categoría a <b>'Segunda'</b> categoría del país <b>'ITALIA'</b>.
+</li><br />
+<li>Modificar aquellos pedidos en los que la cantidad pedida sea superior a las existencias del artículo, asignando el 20% de las existencias a la cantidad que se ha pedido.
+</li><br />
+<li>Eliminar aquellas tiendas que no han realizado ventas.
+</li><br />
+<li>Eliminar los artículos que no hayan tenido ni compras ni ventas.
+</li><br />
+<li>Borrar los pedidos de <b>'Primera'</b> categoría cuyo país de procedencia sea <b>'BELGICA'</b>.
+</li><br />
+<li>Borrar los pedidos que no tengan tienda.
+</li><br />
+<li>Restar uno a las unidades de los últimos pedidos de la tienda con NIF <b>'5555-B'</b>.
+</li><br />
+</ol>
+</body>
+</html>

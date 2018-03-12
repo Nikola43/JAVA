@@ -1,0 +1,251 @@
+
+Nombre: <Pon aquí tu nombre>
+
+************************************************************************
+	INSTRUCCIONES:
+	==============
+
+-Salva este fichero con las iniciales de tu nombre y apellidos,
+ en el directorio "C:\Examen\ ":
+	Ejemplo:	José María Rivera Calvete
+			JMRC.sql
+
+-Pon tu nombre al ejercicio y lee atentamente todas las preguntas.
+
+-Entra en "SQL Plus" con cualquier usuario. 
+
+-Carga el script para el examen desde el fichero "Datos.sql".
+
+-Donde ponga "SQL>", copiarás las sentencias SQL que has utilizado.
+
+-RECUERDA: guardar, cada cierto tiempo, el contenido de este fichero. Es lo que voy a evaluar, si lo pierdes, lo siento, en la recuperación tendrás otra oportunidad.
+
+	PUNTUACIÓN
+	==========
+- Pregunta 1:	3 puntos
+- Pregunta 2:	2 puntos
+- Pregunta 3:	2 puntos
+- Pregunta 4:	3 puntos
+
+- Se considerará para la evaluación:
+	- Que funcione
+	- Estilo de programación 
+	- Tratamiento de excepciones
+	- Uso de los cursores
+	- Código reutilizable y paramétrico
+
+************************************************************************
+	Descripción de las tablas:
+	==========================
+
+ESPECIALIDADES
+--------------
+#  Cod_es		NUMBER(3)		Código Especialidad 
+   Nombre_es	VARCHAR2(40)	Nombre de la especialidad
+
+CENTROS
+-------
+# Cod_ce		NUMBER(5)		Código del centro
+  Nombre_ce		VARCHAR2(30)	Nombre del centro
+
+PLAZAS
+------
+#* Cod_pl		NUMBER(5)		Código del centro
+#* Esp_pl		NUMBER(3)		Código Especialidad 
+   PlazVac_pl	NUMBER(2)		Número de plazas vacantes
+   PlazAdj_pl	NUMBER(2)		Número de plazas adjudicadas
+
+PROFESORES
+----------
+# Cod_pr		NUMBER(4)		Código profesor
+  Nombre_pr		VARCHAR2(35)	Nombre del profesor
+* Esp_pr		NUMBER(3)		Código Especialidad del profesor
+  AntCuerpo_pr	NUMBER(2)		Antigüedad en el cuerpo
+  Horas_pr		NUMBER(3)		Nº de horas de cursos
+  AntCentro_pr	NUMBER(2)		Antigüedad en el último centro de destino
+
+PETICIONES
+----------
+# Cod_pe		NUMBER(4)		Código profesor
+# Orden_pe		NUMBER(3)		Nº de orden de la petición
+* Cod_ce		NUMBER(5)		Código del centro pedido
+
+ADJUDICACIONES
+--------------
+#* Cod_pr		NUMBER(4)		Código profesor
+#* Esp_pl		NUMBER(3)		Código Especialidad 
+#* Cod_ce		NUMBER(5)		Código del centro pedido
+   Orden_pe		NUMBER(3)		Nº de orden de la petición adjudicada
+
+
+Nota: 
+	# PRIMARY KEY
+	* FOREIGN KEY
+	(O) Obligatorio
+	(U) Único
+
+************************************************************************
+1.- Diseña una función llamada "Baremo", de tipo NUMBER, que reciba tres parámetros: los años de antigüedad en el cuerpo, el total de las horas de los cursos realizados y la antigüedad en el último centro de destino. 
+
+Los criterios de baremación para el cáculo de puntos serán los siguientes:
+
+	a) Antigüedad en el cuerpo:
+		• 2 puntos por cada año.
+	b) Cursos:
+		• Por cada bloque de 10 horas, 0,10 puntos hasta un máximo de 4 puntos.
+	c) Antigüedad en el último centro:
+		• Por el 1º y 2º año: 	2 puntos por año.
+		• Por el 3º: 		3 puntos.
+		• Por el 4º y 5º año: 	4 puntos por año.
+		• Por el 6º: 		5 puntos.
+		• Por el 7º y 8º año: 	4 puntos por año.
+		• Por el 9º: 		3 puntos.
+		• Por el 10º y siguientes: 2 puntos por año.
+
+
+
+Código fuente>
+CREATE OR REPLACE FUNCTION mBaremo(
+	antCuerpo 	NUMBER,
+	horas		NUMBER,
+	antCentro 	NUMBER)
+	RETURN NUMBER
+IS
+	puntos	NUMBER := 0;
+BEGIN
+	puntos := antCuerpo * 2;
+	puntos := puntos + LEAST(TRUNC(horas/10)*0.1,4);
+	FOR i IN 1..antCentro LOOP
+		IF i = 6 THEN
+			puntos := puntos + 5;
+		ELSIF i IN (3,9) THEN
+			puntos := puntos + 3;
+		ELSIF i IN (4,5,7,8) THEN
+			puntos := puntos + 4;
+		ELSE
+			puntos := puntos + 2;
+		END IF;
+	END LOOP;
+	RETURN puntos;
+END mBaremo;
+/
+
+SELECT COD_PR, 
+	Baremo(AntCuerpo_pr,Horas_pr,AntCentro_pr) aBaremo, 
+	mBaremo(AntCuerpo_pr,Horas_pr,AntCentro_pr) mBaremo, 
+	Baremo(AntCuerpo_pr,0,0) aCu, 
+	mBaremo(AntCuerpo_pr,0,0) mCu, 
+	Baremo(0,Horas_pr,0) aH, 
+	mBaremo(0,Horas_pr,0) mH, 
+	Baremo(0,0,AntCentro_pr) aCe, 
+	mBaremo(0,0,AntCentro_pr) mCe 
+	from PROFESORES 
+	WHERE Baremo(AntCuerpo_pr,Horas_pr,AntCentro_pr) <> mBaremo(AntCuerpo_pr,Horas_pr,AntCentro_pr)
+	ORDER BY 3;
+
+************************************************************************
+2.- Diseña una función llamada "Comprobar_Pet", de tipo BOOLEAN, que reciba como parámetro el código de un centro y el de una especialidad, consulte la información en la tabla PLAZAS de esos datos, y devolviendo TRUE cuando haya plaza y, FALSE, cuando no.
+Nota: habrá plazas cuando el valor de las plazas vacante sea mayor que el de las adjudicadas.
+
+Código fuente>
+CREATE OR REPLACE FUNCTION Comprobar_pet(
+	c_centro 	NUMBER,
+	c_especialidad 	NUMBER)
+	RETURN BOOLEAN
+IS
+	plazas_vac	NUMBER;
+	plazas_adj	NUMBER;
+BEGIN
+	SELECT PlazVac_pl, PlazAdj_pl INTO plazas_vac, plazas_adj
+		FROM PLAZAS 
+		WHERE Cod_pl = c_centro AND Esp_pl = c_especialidad;
+	IF plazas_vac > plazas_adj THEN
+		RETURN TRUE;
+	ELSE
+		RETURN FALSE;
+	END IF;
+EXCEPTION
+	WHEN NO_DATA_FOUND THEN
+		RETURN FALSE;
+END Comprobar_pet;
+/
+-- Para probarla
+CREATE OR REPLACE PROCEDURE E2
+is
+BEGIN
+	IF Comprobar_pet(41001,107) and NOT Comprobar_pet(41002,107) and NOT Comprobar_pet(41015,107) THEN
+		DBMS_OUTPUT.PUT_LINE('Funciona');
+	ELSE
+		DBMS_OUTPUT.PUT_LINE('Falla');
+	END IF;
+END E2;
+/
+
+************************************************************************
+3.- Diseña un procedimiento llamado "Adjudicar_Pet", que reciba como parámetro el código de un centro, el de una especialidad y el de un profesor, y adjudique esa plaza a ese profesor.
+Nota: adjudicar una plaza a un profesor será almacenar en la tabla ADJUDICACIONES, un registro con los datos suministrados como parametros. El campo que falta se obtendrá, "Orden_pe", de una consulta a la tabla PETICIONES así como modificar la tabla PLAZAS incrementando el campo PlazAdj_pl en una unidad.
+
+Código fuente>
+CREATE OR REPLACE PROCEDURE Adjudicar_pet(
+	c_centro 	NUMBER,
+	c_especialidad 	NUMBER,
+	c_profesor	NUMBER)
+IS
+	orden	NUMBER;
+	plazas_adj	NUMBER;
+BEGIN
+	SELECT Orden_pe INTO orden
+		FROM PETICIONES 
+		WHERE Cen_pe = c_centro AND Cod_pe = c_profesor;
+	INSERT INTO ADJUDICACIONES
+		VALUES(c_profesor, c_especialidad, c_centro, orden);
+	UPDATE PLAZAS
+		SET PlazAdj_pl = PlazAdj_pl + 1
+		WHERE Cod_pl = c_centro AND Esp_pl = c_especialidad;
+EXCEPTION
+	WHEN NO_DATA_FOUND THEN
+		RAISE_APPLICATION_ERROR(-20001,'Error adjudicando plazas: No existe petición');
+	WHEN OTHERS THEN
+		RAISE_APPLICATION_ERROR(-20002,'Error adjudicando plazas');
+END Adjudicar_pet;
+/
+-- Para probarla
+SELECT * FROM PLAZAS WHERE Cod_pl = 41001 AND Esp_pl = 107;
+EXEC Adjudicar_pet(41001,107,11)
+SELECT * FROM ADJUDICACIONES;
+SELECT * FROM PLAZAS WHERE Cod_pl = 41001 AND Esp_pl = 107;
+ROLLBACK;
+************************************************************************
+4.- Diseña un procedimiento llamado "Traslado", que realice el concurso de traslado de los profesores. Éste se realizará por cada especialidad ordenando los profesores por la baremación de los méritos presentados, consultando sus peticiones y adjudicando la primera que esté libre, si hay alguna.
+
+Código fuente>
+CREATE OR REPLACE PROCEDURE Traslado
+IS
+	CURSOR c_profesor IS
+		SELECT Cod_pr, Esp_pr, Baremo(AntCuerpo_pr,Horas_pr,
+		) puntos
+		FROM PROFESORES
+		ORDER BY Esp_pr, puntos DESC;
+	CURSOR c_peticiones(profesor PROFESORES.Cod_pr%TYPE) IS
+		SELECT Cen_pe
+		FROM PETICIONES
+		WHERE Cod_pe = profesor
+		ORDER BY Orden_pe;
+	
+BEGIN
+	--COMMIT;
+	FOR r1 IN c_profesor LOOP
+		FOR r2 IN c_peticiones(r1.Cod_pr) LOOP
+			IF Comprobar_pet(r2.Cen_pe, r1.Esp_pr) THEN
+				Adjudicar_pet(r2.Cen_pe, r1.Esp_pr, r1.Cod_pr);
+				EXIT;
+			END IF;
+		END LOOP;
+	END LOOP;
+	--COMMIT;
+EXCEPTION
+	WHEN OTHERS THEN
+		ROLLBACK;
+		RAISE_APPLICATION_ERROR(-20002,'Error adjudicando plazas');
+END Traslado;
+/
