@@ -101,5 +101,6 @@ public class Autobus {
             System.out.println("-----------------------------------------------");
             System.out.println(conductor.devolverDatosConductor());
         }
+        System.out.println();
     }
 }

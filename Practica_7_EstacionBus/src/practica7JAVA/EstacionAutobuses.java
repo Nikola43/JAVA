@@ -35,7 +35,7 @@ public class EstacionAutobuses {
     public boolean hayAndenVacio()
     {
         for (int i = 0; i < andenes.length; i++)
-            if (andenes[i] != null)
+            if (andenes[i] == null)
                 return true;
 
         return false;
@@ -61,6 +61,7 @@ public class EstacionAutobuses {
 
     public void introduceBusEnAndenVacio(Autobus autobus)
     {
+
         //Si hay un andén vacío
         if (hayAndenVacio())
         {
@@ -72,6 +73,7 @@ public class EstacionAutobuses {
 
             //También aumenta el atributo autobusesEnAnden en 1
             autobusesEnAnden++;
+
         }
     }
 
