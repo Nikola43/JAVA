@@ -2,10 +2,10 @@ package practica7JAVA;
 
 class Conductor {
     //Atributos
-    String dni, nombre, apellidos, ciudadAlojamiento;
-    int kmMes;
+    private String dni, nombre, apellidos, ciudadAlojamiento;
+    private int kmMes;
 
-    final static int MAX_KILOMETROS_MES = 350;
+    private final static int MAX_KILOMETROS_MES = 350;
 
     //Constructor sobrecargado
     public Conductor(String dni, String nombre, String apellidos, String ciudadAlojamiento)

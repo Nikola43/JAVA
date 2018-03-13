@@ -6,16 +6,18 @@ import java.io.InputStreamReader;
 
 public class EmpresaAutobuses {
 
-    final int KMGRANADACORDOBA = 156;
-    final int KMCORDOBAJAEN = 100;
-    final int KMGRANADAJAEN = 143;
+    final static int KMGRANADACORDOBA = 156;
+    final static int KMCORDOBAJAEN = 100;
+    final static int KMGRANADAJAEN = 143;
 
-    public static void main(String []args) throws IOException {
+    public static void main(String[] args) throws IOException {
         char eleccionUsuario;
         String nombreEstacion;
         String nombreCiudad;
         String ciudadOrigen;
         String ciudadDestino;
+        String nombreConductor;
+        int autobusSeleccionado;
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -70,29 +72,40 @@ public class EmpresaAutobuses {
                 case 'c' :
 
                     System.out.println("Introduce el nombre de la ciudad de origen: ");
-                    ciudadOrigen = bufferedReader.readLine();
+                    ciudadOrigen = bufferedReader.readLine().toUpperCase();
 
                     System.out.println("Introduce el nombre de la ciudad de destino: ");
-                    ciudadDestino = bufferedReader.readLine();
+                    ciudadDestino = bufferedReader.readLine().toUpperCase();
+
+                    System.out.println();
 
 
+                    mostrarConductoresCiudad(conductores,ciudadOrigen);
+                    System.out.print("Introduce el nombre del conductor: ");
+                    nombreConductor = bufferedReader.readLine();
 
-                    /*
+                    mostrarAutobusesEstacion(estacionAutobuses, ciudadOrigen);
+                    int estacionOrigen = buscarEstacion(estacionAutobuses, ciudadOrigen);
 
-                    Que pide al usuario la ciudad de origen del viaje y la ciudad de destino del viaje
-                     (suponemos que es buena gente y meterá correctamente los nombres de las ciudades,
-                     eso sí puede ponerlas en minúsculas o mayúsculas).
-                     Luego mostrará los conductores que hay alojados en esa ciudad para asignarles el viaje
-                     y pedirá al usuario que indique qué conductor va a realizar el viaje (aquí el usuario también será buena gente).
-                      Una vez hecho lo anterior, selecciona un autobús libre en la ciudad de origen.
+                    autobusSeleccionado = estacionAutobuses[estacionOrigen].devuelvePosicionAutobusLibre();
 
-                    Y por último, si hay un andén vacío en la estación de destino y se puede asignar un conductor
-                     al autobús seleccionado, el programa sacará del andén de la estación de origen el autobús,
-                      hará el viaje e introducirá el autobús en un andén vacío en la estación de destino.
-                    Al acabar, mostrará un mensaje de éxito. Si no se puedo realizar el viaje, no se hará nada de lo anterior y
-                    mostrará un mensaje de que el viaje no pudo realizarse. (1.5 puntos)
-                     */
+                    int estacionDestino = buscarEstacion(estacionAutobuses, ciudadDestino);
 
+                    if (ciudadOrigen.equals("CORDOBA") && ciudadDestino.equals("JAEN"))
+                    {
+                        if (estacionAutobuses[estacionDestino].hayAndenVacio()
+                                && estacionAutobuses[estacionDestino].getAutobus(autobusSeleccionado).asignarConductor(conductores[buscarConductor(conductores, nombreConductor)], KMCORDOBAJAEN))
+                        {
+                            estacionAutobuses[estacionOrigen].sacarAutobusDelAnden(autobusSeleccionado);
+
+                            estacionAutobuses[estacionOrigen].getAutobus(autobusSeleccionado).hacerViaje(KMCORDOBAJAEN, ciudadDestino);
+
+                            estacionAutobuses[estacionDestino].introduceBusEnAndenVacio(estacionAutobuses[estacionOrigen].getAutobus(autobusSeleccionado));
+
+                            System.out.println("Fin del viaje");
+
+                        }
+                    }
                     break;
 
                 // D - REINICIAR KILÓMETROS A LOS CONDUCTORES
@@ -115,32 +128,38 @@ public class EmpresaAutobuses {
 
     private static int buscarEstacion(EstacionAutobuses []estacionAutobuses ,String nombreEstacion)
     {
-        for (int i = 0; i < estacionAutobuses.length; i++) {
+        for (int i = 0; i < estacionAutobuses.length; i++)
             if (estacionAutobuses[i].getNombreCiudad().equals(nombreEstacion))
                 return i;
-        }
+
         return -1;
     }
 
     private static void mostrarAutobusesEstacion(EstacionAutobuses []estacionAutobuses, String nombreEstacion)
     {
-        int posicionEstacion = buscarEstacion(estacionAutobuses, nombreEstacion);
-        estacionAutobuses[posicionEstacion].mostrarAutobuses();
+        int posicionEstacion;
+        for (int i = 0; i < estacionAutobuses.length; i++) {
+            posicionEstacion = buscarEstacion(estacionAutobuses, nombreEstacion);
+            estacionAutobuses[posicionEstacion].mostrarAutobuses();
+        }
     }
 
     private static int buscarConductor(Conductor []conductores, String nombreCiudad)
     {
-        for (int i = 0; i < conductores.length; i++) {
+        for (int i = 0; i < conductores.length; i++)
             if (conductores[i].getCiudadAlojamiento().equals(nombreCiudad))
                 return i;
-        }
+
         return -1;
     }
 
     private static void mostrarConductoresCiudad(Conductor []conductores, String nombreCiudad)
     {
-        int posicionConductor = buscarConductor(conductores, nombreCiudad);
-        System.out.println(conductores[posicionConductor].devolverDatosConductor());
+        int posicionConductor;
+        for (int i = 0; i < conductores.length; i++) {
+            posicionConductor = buscarConductor(conductores, nombreCiudad);
+            System.out.println(conductores[posicionConductor].devolverDatosConductor());
+        }
     }
 
     private static void reiniciarKilometrosTodosConductores(Conductor []conductores)
