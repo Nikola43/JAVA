@@ -18,6 +18,8 @@ public class EmpresaAutobuses {
         String ciudadDestino;
         String nombreConductor;
         int autobusSeleccionado;
+        int estacionOrigen;
+        int estacionDestino;
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -57,14 +59,14 @@ public class EmpresaAutobuses {
                 // A - MOSTRAR AUTOBUSES DE UNA ESTACIÓN
                 case 'a' :
                     System.out.println("Introduce el nombre de la estacion que quiere ver: ");
-                    nombreEstacion = bufferedReader.readLine();
+                    nombreEstacion = bufferedReader.readLine().toUpperCase();
                     mostrarAutobusesEstacion(estacionAutobuses, nombreEstacion);
                     break;
 
                 // B - MOSTRAR CONDUCTORES.
                 case 'b' :
                     System.out.println("Introduce el nombre de la ciudad que quiere ver: ");
-                    nombreCiudad = bufferedReader.readLine();
+                    nombreCiudad = bufferedReader.readLine().toUpperCase();
                     mostrarConductoresCiudad(conductores, nombreCiudad);
                     break;
 
@@ -85,11 +87,11 @@ public class EmpresaAutobuses {
                     nombreConductor = bufferedReader.readLine();
 
                     mostrarAutobusesEstacion(estacionAutobuses, ciudadOrigen);
-                    int estacionOrigen = buscarEstacion(estacionAutobuses, ciudadOrigen);
+                    estacionOrigen = buscarEstacion(estacionAutobuses, ciudadOrigen);
 
                     autobusSeleccionado = estacionAutobuses[estacionOrigen].devuelvePosicionAutobusLibre();
 
-                    int estacionDestino = buscarEstacion(estacionAutobuses, ciudadDestino);
+                    estacionDestino = buscarEstacion(estacionAutobuses, ciudadDestino);
 
                     if (ciudadOrigen.equals("CORDOBA") && ciudadDestino.equals("JAEN"))
                     {
@@ -157,8 +159,12 @@ public class EmpresaAutobuses {
     {
         int posicionConductor;
         for (int i = 0; i < conductores.length; i++) {
-            posicionConductor = buscarConductor(conductores, nombreCiudad);
-            System.out.println(conductores[posicionConductor].devolverDatosConductor());
+
+            if ( conductores[i].getCiudadAlojamiento().equals(nombreCiudad))
+            {
+                posicionConductor = buscarConductor(conductores, nombreCiudad);
+                System.out.println(conductores[posicionConductor].devolverDatosConductor());
+            }
         }
     }
 
