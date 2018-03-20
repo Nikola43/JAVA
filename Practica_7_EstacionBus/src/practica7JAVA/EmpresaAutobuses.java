@@ -9,6 +9,7 @@ public class EmpresaAutobuses {
     final static int KMGRANADACORDOBA = 156;
     final static int KMCORDOBAJAEN = 100;
     final static int KMGRANADAJAEN = 143;
+    private static String matriculaBus;
 
     public static void main(String[] args) throws IOException {
         char eleccionUsuario;
@@ -67,26 +68,35 @@ public class EmpresaAutobuses {
                 case 'b' :
                     System.out.println("Introduce el nombre de la ciudad que quiere ver: ");
                     nombreCiudad = bufferedReader.readLine().toUpperCase();
-                    mostrarConductoresCiudad(conductores, nombreCiudad);
+                    mostrarConductores(buscarConductoresCiudad(conductores, nombreCiudad));
                     break;
 
                 // C - GESTIONAR VIAJE.
                 case 'c' :
 
+                    //Se pide al usuario la ciudad de origen del viaje y la
+                    //ciudad de destino del viaje
                     System.out.println("Introduce el nombre de la ciudad de origen: ");
                     ciudadOrigen = bufferedReader.readLine().toUpperCase();
 
                     System.out.println("Introduce el nombre de la ciudad de destino: ");
                     ciudadDestino = bufferedReader.readLine().toUpperCase();
-
                     System.out.println();
 
+                    //mostrará los conductores que hay alojados en esa ciudad para
+                    //asignarles el viaje
+                    mostrarConductores(buscarConductoresCiudad(conductores, ciudadOrigen));
 
-                    mostrarConductoresCiudad(conductores,ciudadOrigen);
+                    //Pedirá al usuario que indique qué conductor va a realizar el viaje
                     System.out.print("Introduce el nombre del conductor: ");
                     nombreConductor = bufferedReader.readLine();
 
-                    mostrarAutobusesEstacion(estacionAutobuses, ciudadOrigen);
+                    //Una vez hecho lo anterior, selecciona un autobús libre en la ciudad de origen.
+                    mostrarAutobusesEstacion(estacionAutobuses, estacionAutobuses[buscarEstacion(estacionAutobuses, ciudadOrigen)].getNombreCiudad());
+
+                    System.out.print("Introduce la numero del autobus: ");
+                    matriculaBus = bufferedReader.readLine();
+
                     estacionOrigen = buscarEstacion(estacionAutobuses, ciudadOrigen);
 
                     autobusSeleccionado = estacionAutobuses[estacionOrigen].devuelvePosicionAutobusLibre();
@@ -95,18 +105,7 @@ public class EmpresaAutobuses {
 
                     if (ciudadOrigen.equals("CORDOBA") && ciudadDestino.equals("JAEN"))
                     {
-                        if (estacionAutobuses[estacionDestino].hayAndenVacio()
-                                && estacionAutobuses[estacionDestino].getAutobus(autobusSeleccionado).asignarConductor(conductores[buscarConductor(conductores, nombreConductor)], KMCORDOBAJAEN))
-                        {
-                            estacionAutobuses[estacionOrigen].sacarAutobusDelAnden(autobusSeleccionado);
 
-                            estacionAutobuses[estacionOrigen].getAutobus(autobusSeleccionado).hacerViaje(KMCORDOBAJAEN, ciudadDestino);
-
-                            estacionAutobuses[estacionDestino].introduceBusEnAndenVacio(estacionAutobuses[estacionOrigen].getAutobus(autobusSeleccionado));
-
-                            System.out.println("Fin del viaje");
-
-                        }
                     }
                     break;
 
@@ -130,85 +129,83 @@ public class EmpresaAutobuses {
 
     private static int buscarEstacion(EstacionAutobuses []estacionAutobuses ,String nombreEstacion)
     {
-        for (int i = 0; i < estacionAutobuses.length; i++)
-            if (estacionAutobuses[i].getNombreCiudad().equals(nombreEstacion))
-                return i;
-
-        return -1;
-    }
-
-    private static void mostrarAutobusesEstacion(EstacionAutobuses []estacionAutobuses, String nombreEstacion)
-    {
-        int posicionEstacion;
-        for (int i = 0; i < estacionAutobuses.length; i++) {
-            posicionEstacion = buscarEstacion(estacionAutobuses, nombreEstacion);
-            estacionAutobuses[posicionEstacion].mostrarAutobuses();
+        if (estacionAutobuses != null) {
+            for (int i = 0; i < estacionAutobuses.length; i++)
+                if (estacionAutobuses[i].getNombreCiudad().equals(nombreEstacion))
+                    return i;
         }
-    }
-
-    private static int buscarConductor(Conductor []conductores, String nombreCiudad)
-    {
-        for (int i = 0; i < conductores.length; i++)
-            if (conductores[i].getCiudadAlojamiento().equals(nombreCiudad))
-                return i;
 
         return -1;
     }
 
-    private static void mostrarConductoresCiudad(Conductor []conductores, String nombreCiudad)
-    {
-        int posicionConductor;
-        for (int i = 0; i < conductores.length; i++) {
+    private static void mostrarAutobusesEstacion(EstacionAutobuses []estacionAutobuses, String nombreEstacion) {
+        int posicionEstacion = -1;
 
-            if ( conductores[i].getCiudadAlojamiento().equals(nombreCiudad))
-            {
-                posicionConductor = buscarConductor(conductores, nombreCiudad);
-                System.out.println(conductores[posicionConductor].devolverDatosConductor());
+        if (estacionAutobuses != null) {
+            for (int i = 0; i < estacionAutobuses[i].getAutobusesEnAnden(); i++) {
+                posicionEstacion = buscarEstacion(estacionAutobuses, nombreEstacion);
             }
+            if (posicionEstacion != -1)
+                estacionAutobuses[posicionEstacion].mostrarAutobuses();
+            else
+                System.out.println("No se encuentra la estacion " + nombreEstacion + "\n");
         }
+    }
+
+    private static Conductor [] buscarConductoresCiudad(Conductor []conductores, String nombreCiudad)
+    {
+        Conductor []listaConductores = null;
+        int numeroConductores = 0;
+        int contador = 0;
+        int conductoresEncontrados = 0;
+
+        if ( conductores != null && nombreCiudad != null )
+        {
+            //Calculamos el numero de conductores de esa ciudad
+            for (int i = 0; i < conductores.length; i++)
+                if (conductores[i].getCiudadAlojamiento().equals(nombreCiudad))
+                    numeroConductores++;
+
+            //Creamos un array de conductores de ese tamaño
+            listaConductores = new Conductor[numeroConductores];
+
+            //Guardamos en el array los conductores de esa ciudad
+            do {
+                if (conductores[contador].getCiudadAlojamiento().equals(nombreCiudad)) {
+                    listaConductores[conductoresEncontrados] = conductores[contador];
+                    conductoresEncontrados++;
+                }
+                contador++;
+            } while (conductoresEncontrados < numeroConductores);
+        }
+
+        return listaConductores;
+    }
+
+    private static Conductor buscarConductorNombre(Conductor []conductores, String nombreConductor)
+    {
+        Conductor conductor = null;
+
+        if (conductores != null && nombreConductor != null)
+            for (Conductor conductorActual: conductores)
+                if (conductorActual.getNombre().equals(nombreConductor))
+                    conductor = conductorActual;
+
+        return conductor;
+    }
+
+
+    private static void mostrarConductores(Conductor []conductores) {
+
+        if (conductores != null)
+            for (int i = 0; i < conductores.length; i++)
+                System.out.println(conductores[i].devolverDatosConductor());
     }
 
     private static void reiniciarKilometrosTodosConductores(Conductor []conductores)
     {
-        for (Conductor conductor: conductores)
+        if (conductores != null)
+            for (Conductor conductor: conductores)
             conductor.reiniciaKmMes();
     }
-
-    //private void
 }
-
-
-/*
-
- Luego mostrará un menú para que el usuario elija la opción que quiera. Las opciones
-son las siguientes:
-o a. MOSTRAR AUTOBUSES DE UNA ESTACIÓN. Que pide al usuario el nombre de
-la estación de la que quiere mostrar los autobuses y los muestra por pantalla.
-(0.5 puntos)
-
-o b. MOSTRAR CONDUCTORES. Que pide al usuario el nombre de la ciudad de
-donde quiere mostrar los conductores que están allí alojados y los muestra por
-pantalla.
-(0.5 puntos)
-
-o c. GESTIONAR VIAJE. Que pide al usuario la ciudad de origen del viaje y la
-ciudad de destino del viaje (suponemos que es buena gente y meterá
-correctamente los nombres de las ciudades, eso sí puede ponerlas en
-minúsculas o mayúsculas).
-Luego mostrará los conductores que hay alojados en esa ciudad para
-asignarles el viaje y pedirá al usuario que indique qué conductor va a realizar el
-viaje (aquí el usuario también será buena gente).
-Una vez hecho lo anterior, selecciona un autobús libre en la ciudad de origen.
-Y por último, si hay un andén vacío en la estación de destino y se puede
-asignar un conductor al autobús seleccionado, el programa sacará del andén
-de la estación de origen el autobús, hará el viaje e introducirá el autobús en
-un andén vacío en la estación de destino.
-Al acabar, mostrará un mensaje de éxito. Si no se puedo realizar el viaje, no se
-hará nada de lo anterior y mostrará un mensaje de que el viaje no pudo
-realizarse.
-(1.5 puntos)
-
-o d. REINICIAR KILÓMETROS A LOS CONDUCTORES. Que pondrá a 0 todos los km
-de todos los conductores de la compañía.
-(0.25 puntos)
- */

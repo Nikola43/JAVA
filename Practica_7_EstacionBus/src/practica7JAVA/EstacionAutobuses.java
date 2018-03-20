@@ -25,6 +25,14 @@ public class EstacionAutobuses {
         return nombreCiudad;
     }
 
+    public Autobus[] getAndenes() {
+        return andenes;
+    }
+
+    public int getAutobusesEnAnden() {
+        return autobusesEnAnden;
+    }
+
     public Autobus getAutobus(int pos) {
         //Comprobamos que la posicion es menor o igual que el numero de andenes
         //y que en esa posicion haya un autobus
@@ -98,7 +106,7 @@ public class EstacionAutobuses {
 
     public void mostrarAutobuses()
     {
-        System.out.println("------------------- ESTACION DE "+nombreCiudad+" -------------------\n");
+        System.out.println("------------------- ESTACION DE "+nombreCiudad+" -------------------");
 
         for (int i = 0; i < autobusesEnAnden; i++) {
             getAutobus(i).mostrarDatosAutobus();
@@ -106,5 +114,7 @@ public class EstacionAutobuses {
 
         System.out.println("Andenes ocupados: "+autobusesEnAnden);
         System.out.println("Andenes libre: "+(andenes.length - autobusesEnAnden));
+
+        System.out.println("--------------------------------------------------------------------\n\n");
     }
 }
