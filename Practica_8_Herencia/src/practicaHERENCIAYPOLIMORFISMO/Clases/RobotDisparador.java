@@ -16,6 +16,20 @@ public class RobotDisparador extends Robot implements IMovible, IDisparable {
         this.posicionDisparo = posicionDisparo;
     }
 
+    //Metodos consultores
+
+    public int getDistanciaDisparo() {
+        return distanciaDisparo;
+    }
+
+    public char getPosicionDisparo() {
+        return posicionDisparo;
+    }
+
+    public int getNumeroDisparosAcertados() {
+        return numeroDisparosAcertados;
+    }
+
     //Metodos heredados
     @Override
     public void movimientoDiagonal(int numeroPasos, String movimiento, int frontX, int frontY, int frontNegX, int frontNegY) {
@@ -64,7 +78,6 @@ public class RobotDisparador extends Robot implements IMovible, IDisparable {
             numeroDisparosAcertados++;
             sePuedeDisparar = true;
         }
-
 
         return sePuedeDisparar;
     }
