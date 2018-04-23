@@ -9,12 +9,12 @@ public abstract class Robot implements IMovible {
     private int posY;
 
     //Constructores
-    public Robot(int posX, int posY){
+    Robot(int posX, int posY){
         this.posX = posX;
         this.posY = posY;
     }
 
-    public Robot(Robot robotCopia){
+    Robot(Robot robotCopia){
         this.posX = robotCopia.posX;
         this.posY = robotCopia.posY;
     }
@@ -28,7 +28,7 @@ public abstract class Robot implements IMovible {
         return posY;
     }
 
-    public static int getNumeroRobots() {
+    public int getNumeroRobots() {
         return numeroRobots;
     }
 

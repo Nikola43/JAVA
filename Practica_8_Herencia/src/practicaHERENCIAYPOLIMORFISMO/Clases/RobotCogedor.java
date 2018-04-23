@@ -74,7 +74,7 @@ public class RobotCogedor extends Robot implements ICogible {
         Comentario: Me ha sido necesaria esta funcion para la funcion coger(Objeto obj)
                     creo que simplifica el codigo, la hace mas legible y aumenta la cohesion
 
-        Prototipo: public int hayHuecoLibreVectorObjetos();
+        Prototipo: private int hayHuecoLibreVectorObjetos();
         Funcion: Devuelve la primera posicion libre que encuentra en el vector de objetos
         Entradas: -
         Precondiciones: -
@@ -84,7 +84,7 @@ public class RobotCogedor extends Robot implements ICogible {
             -> Devolvera un numero entre 0 y el tamaño maximo del vector de objetos
                que sera la posicion libre
      */
-    public int hayHuecoLibreVectorObjetos(){
+    private int hayHuecoLibreVectorObjetos(){
 
         for (int i = 0; i < objetos.length; i++)
             if (objetos[i] == null)
@@ -141,7 +141,7 @@ public class RobotCogedor extends Robot implements ICogible {
         for (int i = 1; i < objetos.length; i++) {
             objetoAux = objetos[i];
 
-            for (int j = i - 1; j >= 0 && objetos[j] instanceof Pelota? ((Pelota) objetos[j]).calculaVolumen() > ((Pelota)objetoAux).calculaVolumen() : ((PoligonoPlano)objetoAux).calcularArea() > ((PoligonoPlano)objetoAux).calcularArea() ; j--)
+            for (int j = i - 1; j >= 0 && objetos[j] instanceof Pelota && objetoAux instanceof Pelota? ((Pelota) objetos[j]).calculaVolumen() > ((Pelota)objetoAux).calculaVolumen() : (objetos[j] instanceof PoligonoPlano && objetoAux instanceof PoligonoPlano) && ((PoligonoPlano) objetos[j]).calcularArea() > ((PoligonoPlano) objetoAux).calcularArea(); j--)
             {
                 objetos[j+1] = objetos[j];
                 objetos[j] = objetoAux;
@@ -149,7 +149,7 @@ public class RobotCogedor extends Robot implements ICogible {
         }
     }
 
-    public int devolverPosicionObjeto(Objeto objeto){
+    private int devolverPosicionObjeto(Objeto objeto){
 
         for (int i = 0; i < objetos.length; i++)
             if (objeto.equals(objetos[i]))
@@ -167,15 +167,15 @@ public class RobotCogedor extends Robot implements ICogible {
     }
 
     @Override
-    public  void movimientoDiagonal(int numeroPasos, String movimiento, int frontX, int frontY, int frontNegX, int frontNegY) {
+    public void movimientoDiagonal(int numeroPasos, String movimiento, int frontX, int frontY, int frontNegX, int frontNegY) {
 
     }
 
-    public void mostrarObjetosCodigos(){
+
+    public void mostrarObjetosCogidos(){
         for (int i = 0; i < numeroObjetos; i++) {
             System.out.println("OBJETO ---------------- "+i);
             System.out.println(objetos[i].toString());
         }
-
     }
 }

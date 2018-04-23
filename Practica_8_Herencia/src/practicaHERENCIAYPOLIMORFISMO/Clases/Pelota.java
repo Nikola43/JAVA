@@ -2,7 +2,7 @@ package practicaHERENCIAYPOLIMORFISMO.Clases;
 
 public class Pelota extends Objeto {
     //Atributos
-    public static final double PI = 3.14;
+    private static final double PI = 3.14;
     private float radio;
 
     //Constructores
