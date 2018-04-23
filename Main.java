@@ -2,7 +2,7 @@ public class Main
 {
     public static void main(String... Args)
     {
-	    System.out.print("Potencia 2^3 v1: ");
+	System.out.print("Potencia 2^3 v1: ");
         System.out.println(potencia(2, 3));
         System.out.println();
 
