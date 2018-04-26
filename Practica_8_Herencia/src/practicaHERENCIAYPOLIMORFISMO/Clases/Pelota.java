@@ -6,8 +6,8 @@ public class Pelota extends Objeto {
     private float radio;
 
     //Constructores
-    public Pelota(int posX, int posY, float peso, float radio) {
-        super(posX, posY, peso);
+    public Pelota(int posY, int posX, float peso, float radio) {
+        super(posY, posX, peso);
         this.radio = radio;
     }
 

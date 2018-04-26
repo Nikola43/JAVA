@@ -1,15 +1,16 @@
 package practicaHERENCIAYPOLIMORFISMO.Clases;
+
 import practicaHERENCIAYPOLIMORFISMO.Interfaces.ICogible;
 
 public class RobotCogedor extends Robot implements ICogible {
     //Atributos
     private int brazoAlcanza;
-    private Objeto []objetos;
+    private Objeto[] objetos;
     private int numeroObjetos;
 
     //Constructores
-    public RobotCogedor(int posX, int posY, int brazoAlcanza) {
-        super(posX, posY);
+    public RobotCogedor(int posY, int posX, int brazoAlcanza) {
+        super(posY, posX);
         this.brazoAlcanza = brazoAlcanza;
         objetos = new Objeto[4];
         numeroObjetos = 0;
@@ -23,30 +24,30 @@ public class RobotCogedor extends Robot implements ICogible {
         int hueco = hayHuecoLibreVectorObjetos();
 
         //Si el objeto pasado por parametro no es nulo y hay hueco en el vector
-        if (obj != null &&  hueco != -1) {
+        if (obj != null && hueco != -1) {
             // X +
-            if ( this.getPosX() + brazoAlcanza <= obj.getPosX() ) {
+            if (this.getPosX() + brazoAlcanza <= obj.getPosX()) {
                 objetos[hueco] = obj;
                 numeroObjetos++;
                 resultado = true;
             }
 
             // X -
-            if ( this.getPosX() + brazoAlcanza >= obj.getPosX() && !resultado ) {
+            if (this.getPosX() + brazoAlcanza >= obj.getPosX() && !resultado) {
                 objetos[hueco] = obj;
                 numeroObjetos++;
                 resultado = true;
             }
 
             // Y +
-            if ( this.getPosY() + brazoAlcanza <= obj.getPosX() && !resultado ) {
+            if (this.getPosY() + brazoAlcanza <= obj.getPosX() && !resultado) {
                 objetos[hueco] = obj;
                 numeroObjetos++;
                 resultado = true;
             }
 
             // Y -
-            if ( this.getPosY() + brazoAlcanza >= obj.getPosX() && !resultado ) {
+            if (this.getPosY() + brazoAlcanza >= obj.getPosX() && !resultado) {
                 objetos[hueco] = obj;
                 numeroObjetos++;
                 resultado = true;
@@ -60,7 +61,7 @@ public class RobotCogedor extends Robot implements ICogible {
         boolean resultado = false;
         int posicionObjeto = devolverPosicionObjeto(obj);
 
-        if (posicionObjeto != -1){
+        if (posicionObjeto != -1) {
             objetos[posicionObjeto] = null;
             numeroObjetos--;
             resultado = true;
@@ -84,7 +85,7 @@ public class RobotCogedor extends Robot implements ICogible {
             -> Devolvera un numero entre 0 y el tamaño maximo del vector de objetos
                que sera la posicion libre
      */
-    private int hayHuecoLibreVectorObjetos(){
+    private int hayHuecoLibreVectorObjetos() {
 
         for (int i = 0; i < objetos.length; i++)
             if (objetos[i] == null)
@@ -104,52 +105,57 @@ public class RobotCogedor extends Robot implements ICogible {
         Postcondiciones: -
      */
 
-    public void reagruparObjetos()
-    {
+    public void reagruparObjetos() {
         Objeto objetoAux;
 
         for (int i = 1; i < objetos.length; i++) {
             objetoAux = objetos[i];
 
-            for (int j = i - 1; j >= 0 && objetos[j] == null; j--)
-            {
-                objetos[j+1] = objetos[j];
+            for (int j = i - 1; j >= 0 && objetos[j] == null; j--) {
+                objetos[j + 1] = objetos[j];
                 objetos[j] = objetoAux;
             }
         }
     }
 
-    public void ordenarObjetosCogidosPorPeso()
-    {
-        Objeto objetoAux;
+    public void ordenarObjetosCogidosPorPeso() {
+        if (numeroObjetos > 0) {
+            //Primero reagrupamos
+            reagruparObjetos();
 
-        for (int i = 1; i < objetos.length; i++) {
-            objetoAux = objetos[i];
+            Objeto objetoAux;
 
-            for (int j = i - 1; j >= 0 && objetos[j].getPeso() > objetoAux.getPeso(); j--)
-            {
-                objetos[j+1] = objetos[j];
-                objetos[j] = objetoAux;
+            for (int i = 1; i < numeroObjetos; i++) {
+                objetoAux = objetos[i];
+
+                for (int j = i - 1; j >= 0 && objetos[j].getPeso() > objetoAux.getPeso(); j--) {
+                    objetos[j + 1] = objetos[j];
+                    objetos[j] = objetoAux;
+                }
             }
-        }
+        } else
+            System.out.println("Este robot no tiene ningun objeto");
     }
 
-    public void ordenarObjetosCogidosPorAreaYVolumen()
-    {
-        Objeto objetoAux;
+    public void ordenarObjetosCogidosPorAreaYVolumen() {
+        if (numeroObjetos > 0) {
 
-        for (int i = 1; i < objetos.length; i++) {
-            objetoAux = objetos[i];
+            reagruparObjetos();
+            Objeto objetoAux;
 
-            for (int j = i - 1; j >= 0 && objetos[j] instanceof Pelota && objetoAux instanceof Pelota? ((Pelota) objetos[j]).calculaVolumen() > ((Pelota)objetoAux).calculaVolumen() : (objetos[j] instanceof PoligonoPlano && objetoAux instanceof PoligonoPlano) && ((PoligonoPlano) objetos[j]).calcularArea() > ((PoligonoPlano) objetoAux).calcularArea(); j--)
-            {
-                objetos[j+1] = objetos[j];
-                objetos[j] = objetoAux;
+            for (int i = 1; i < objetos.length; i++) {
+                objetoAux = objetos[i];
+
+                for (int j = i - 1; j >= 0 && objetos[j] instanceof Pelota && objetoAux instanceof Pelota ? ((Pelota) objetos[j]).calculaVolumen() > ((Pelota) objetoAux).calculaVolumen() : (objetos[j] instanceof PoligonoPlano && objetoAux instanceof PoligonoPlano) && ((PoligonoPlano) objetos[j]).calcularArea() > ((PoligonoPlano) objetoAux).calcularArea(); j--) {
+                    objetos[j + 1] = objetos[j];
+                    objetos[j] = objetoAux;
+                }
             }
-        }
+        } else
+            System.out.println("Este robot no tiene ningun objeto");
     }
 
-    private int devolverPosicionObjeto(Objeto objeto){
+    private int devolverPosicionObjeto(Objeto objeto) {
 
         for (int i = 0; i < objetos.length; i++)
             if (objeto.equals(objetos[i]))
@@ -162,8 +168,8 @@ public class RobotCogedor extends Robot implements ICogible {
     public void mostrarRobot() {
         System.out.println("ROBOT COGEDOR\n");
         super.mostrarRobot();
-        System.out.println("\nBRAZO ALCANZA: "+brazoAlcanza);
-        System.out.println("OBJETOS COGIDOS: "+numeroObjetos);
+        System.out.println("\nBRAZO ALCANZA: " + brazoAlcanza);
+        System.out.println("OBJETOS COGIDOS: " + numeroObjetos);
     }
 
     @Override
@@ -172,10 +178,14 @@ public class RobotCogedor extends Robot implements ICogible {
     }
 
 
-    public void mostrarObjetosCogidos(){
-        for (int i = 0; i < numeroObjetos; i++) {
-            System.out.println("OBJETO ---------------- "+i);
-            System.out.println(objetos[i].toString());
-        }
+    public void mostrarObjetosCogidos() {
+
+        if (numeroObjetos > 0) {
+            for (int i = 0; i < numeroObjetos; i++) {
+                System.out.println("OBJETO ---------------- " + i);
+                System.out.println(objetos[i].toString());
+            }
+        } else
+            System.out.println("Este robot no tiene ningun objeto");
     }
 }

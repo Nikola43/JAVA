@@ -15,6 +15,9 @@ public class Main {
 
         char opcionMenuPrincipal;
         int robotElegido;
+        char opcionMenuObjetos;
+        int numeroPasos;
+        int direccionRobot;
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -37,90 +40,202 @@ public class Main {
         objetos[3] = new PoligonoPlano(0, 9, (float) 2, (float) 4.5, (float) 3.1);
         objetos[4] = new Pelota(4, 9, (float) 3.1, (float) 4);
 
-        //Ajustamos tablero y lo mostramos
-        ajustarTablero(superficie, robots, objetos);
-        mostrarMatriz(superficie);
+        do {
+            //Ajustamos tablero y lo mostramos
+            ajustarTablero(superficie, robots, objetos);
+            mostrarMatriz(superficie);
 
-        //Pedimos al usuario que elija el robot que va a utilizar
-        for (int i = 0; i < robots.length; i++) {
-            System.out.println((i+1)+" ----------------- ");
-            robots[i].mostrarRobot();
-        }
-        System.out.print("Elige el robot que quieres usar (1-"+robots.length+"): ");
-        robotElegido = Integer.parseInt(bufferedReader.readLine()) - 1;
+            do {
+                System.out.print("Elige el robot que quieres usar (0-" + robots.length + "): ");
+                robotElegido = Integer.parseInt(bufferedReader.readLine());
 
-        //Mostramos menu al usuario
-        mostrarMenuPrincipal();
-        System.out.print("¿Que desea hacer?: ");
-        opcionMenuPrincipal = Character.toLowerCase(bufferedReader.readLine().charAt(0));
+                if (robotElegido < 0 || robotElegido > robots.length)
+                    System.out.println("Opcion no valida!\n");
 
-        switch (opcionMenuPrincipal){
-            case 'a' : robots[robotElegido].mostrarRobot(); break;
-            case 'b' :
-
-                break;
-        }
-
-        //Mostrar objetos del robot
-        if (robots[robotElegido] instanceof RobotCogedor){
-            System.out.println("p (peso)");
-            System.out.println("v (volumen)");
-            System.out.println("a (area)");
-            System.out.println("Como quiere ordenar los objetos(p): ");
-        }
-        else
-            System.out.println("No es un robot cogedor");
+            } while (robotElegido < 0 || robotElegido > robots.length);
 
 
+
+                //Mostramos menu al usuario
+                do {
+                    mostrarMenuPrincipal();
+                    System.out.print("¿Que desea hacer?: ");
+                    opcionMenuPrincipal = Character.toLowerCase(bufferedReader.readLine().charAt(0));
+
+                    if (opcionMenuPrincipal < 'a' || opcionMenuPrincipal > 'd')
+                        System.out.println("Opcion no valida!\n");
+
+                } while (opcionMenuPrincipal < 'a' || opcionMenuPrincipal > 'd');
+
+
+                switch (opcionMenuPrincipal) {
+                    //MOSTRAR ROBOT
+                    case 'a':
+                        mostrarDatosRobot(robotElegido, robots);
+                        break;
+
+                    //MOSTRAR OBJETOS DEL ROBOT (0.5 puntos)
+                    case 'b':
+
+                        if (robots[robotElegido] instanceof RobotCogedor) {
+                            do {
+                                mostrarMenuObjetosRobot();
+                                System.out.print("Como quiere ordenar los objetos?: ");
+                                opcionMenuObjetos = (Character.toLowerCase(bufferedReader.readLine().charAt(0)));
+
+                                if (opcionMenuObjetos != 'a' && opcionMenuObjetos != 'p' && opcionMenuObjetos != 'v')
+                                    System.out.println("Opcion no valida!\n");
+
+                            } while (opcionMenuObjetos != 'a' && opcionMenuObjetos != 'p' && opcionMenuObjetos != 'v');
+
+                            //Mostrar objetos del robot
+                            switch (opcionMenuObjetos) {
+                                case 'a':
+                                case 'v':
+                                    ((RobotCogedor) robots[robotElegido]).ordenarObjetosCogidosPorAreaYVolumen();
+                                    break;
+                                case 'p':
+                                    ((RobotCogedor) robots[robotElegido]).ordenarObjetosCogidosPorPeso();
+                                    break;
+                            }
+                            //Mostramos los objetos
+                            ((RobotCogedor) robots[robotElegido]).mostrarObjetosCogidos();
+                        } else
+                            System.out.println("No es un robot cogedor");
+                        break;
+
+                    //MOVER ROBOT
+                    case 'c':
+                        //Preguntamos cuantos pasos quiere dar el robot
+                        do {
+                            System.out.print("Indique cuantos pasos dara el robot(1-" + (FRONTERA_X - 1) + "): ");
+                            numeroPasos = Integer.parseInt(bufferedReader.readLine());
+                            if (numeroPasos < 1 || numeroPasos > FRONTERA_X - 1)
+                                System.out.println("Opcion no validaa!\n");
+
+                        } while (numeroPasos < 1 || numeroPasos > FRONTERA_X - 1);
+
+                        //Preguntamos la direccion
+                        do {
+                            mostrarMenuMovimientoRobot();
+                            System.out.print("Indique hacia donde se movera el robot: ");
+                            direccionRobot = Integer.parseInt(bufferedReader.readLine());
+
+                            if (direccionRobot < 1 || direccionRobot > 4)
+                                System.out.println("Opcion no valida!\n");
+                        } while (direccionRobot < 1 || direccionRobot > 4);
+
+                        switch (direccionRobot){
+
+                            //Retroceder Y
+                            case 1 :
+                                if (!robots[robotElegido].retrocederEjeY(numeroPasos, 0)
+                                        && superficie[robots[robotElegido].getPosY() - numeroPasos][robots[robotElegido].getPosX()].compareTo("*") < 0)
+                                    System.out.println("Posicion no valida!");
+                                break;
+
+                            //Avanzar Y
+                            case 2 :
+                                if (!robots[robotElegido].avanzarEjeY(numeroPasos, FRONTERA_Y)
+                                        && superficie[robots[robotElegido].getPosY() + numeroPasos][robots[robotElegido].getPosX()].compareTo("*") < 0)
+                                    System.out.println("Posicion no valida!");
+                                break;
+
+                            //Retroceder Y
+                            case 3 :
+                                if (!robots[robotElegido].retrocederEjeX(numeroPasos, 0)
+                                        && superficie[robots[robotElegido].getPosX() - numeroPasos][robots[robotElegido].getPosX()].compareTo("*") < 0)
+                                    System.out.println("Posicion no valida!");
+                                break;
+
+                            //Avanzar Y
+                            case 4 :
+                                if (!robots[robotElegido].avanzarEjeX(numeroPasos, FRONTERA_X)
+                                        && superficie[robots[robotElegido].getPosX() + numeroPasos][robots[robotElegido].getPosX()].compareTo("*") < 0)
+                                    System.out.println("Posicion no valida!");
+                                break;
+                        }
+                        break;
+
+
+                    //COGER OBJETO CON ROBOT COGEDOR
+                    case 'd' :
+
+                        break;
+
+                    //COGER OBJETO CON ROBOT COGEDOR
+                    case 'e' :
+
+                        break;
+                }
+        } while (opcionMenuPrincipal != 'd');
 
     }
-
-    public static void ajustarTablero(String[][] superficie, Robot[] robotsEnTablero, Objeto[] objetosEnTablero) {
+    private static void ajustarTablero(String[][] superficie, Robot[] robotsEnTablero, Objeto[] objetosEnTablero) {
         //Rellenamos con asteriscos
         for (int i = 0; i < superficie.length; i++)
             for (int j = 0; j < superficie[i].length; j++)
                 superficie[i][j] = "*";
 
         //Recorremos vector de objetos
-        for (Objeto objetoActual : objetosEnTablero) {
+        for (int i = 0; i < objetosEnTablero.length; i++) {
             //Pelota
-            if (objetoActual instanceof Pelota)
-                superficie[objetoActual.getPosX()][objetoActual.getPosY()] = "PE";
+            if (objetosEnTablero[i] instanceof Pelota)
+                superficie[objetosEnTablero[i].getPosX()][objetosEnTablero[i].getPosY()] = "PE" + i;
 
             //Poligono plano
-            if (objetoActual instanceof PoligonoPlano)
-                superficie[objetoActual.getPosX()][objetoActual.getPosY()] = "PP";
+            if (objetosEnTablero[i] instanceof PoligonoPlano)
+                superficie[objetosEnTablero[i].getPosX()][objetosEnTablero[i].getPosY()] = "PP" + i;
         }
-        
+
         //Recorremos el vector de robots
-        for (Robot robotActual : robotsEnTablero) {
+        for (int i = 0; i < robotsEnTablero.length; i++) {
             //Robot cogedor
-            if (robotActual instanceof RobotCogedor)
-                superficie[robotActual.getPosX()][robotActual.getPosY()] = "RC";
+            if (robotsEnTablero[i] instanceof RobotCogedor)
+                superficie[robotsEnTablero[i].getPosX()][robotsEnTablero[i].getPosY()] = "RC" + i;
 
             //Robot disparador
-            if (robotActual instanceof RobotDisparador)
-                superficie[robotActual.getPosX()][robotActual.getPosY()] = "RD";
+            if (robotsEnTablero[i] instanceof RobotDisparador)
+                superficie[robotsEnTablero[i].getPosX()][robotsEnTablero[i].getPosY()] = "RD" + i;
         }
     }
 
-    private static void mostrarMatriz(String[][] superficie){
+    private static void mostrarMatriz(String[][] superficie) {
         System.out.println("   0     1     2     3     4     5     6     7     8     9");
         for (int i = 0; i < superficie.length; i++) {
-            System.out.print(i+" ");
+            System.out.print(i + " ");
             for (int j = 0; j < superficie[i].length; j++) {
                 if (superficie[i][j].equals("*"))
-                    System.out.print(" "+superficie[i][j] + "    ");
+                    System.out.print(" " + superficie[i][j] + "    ");
                 else
-                    System.out.print(" "+superficie[i][j] + "   ");
+                    System.out.print(" " + superficie[i][j] + "  ");
             }
             System.out.println();
         }
     }
 
-    private static void mostrarMenuPrincipal(){
-        System.out.println("a. MOSTRAR ROBOT");
-        System.out.println("a. MOSTRAR OBJETOS DEL ROBOT");
-        System.out.println("a. MOVER ROBOT");
+    private static void mostrarMenuMovimientoRobot(){
+        System.out.println("\n1.IZQUIERDA");
+        System.out.println("2.DERECHA");
+        System.out.println("3.ARRIBA");
+        System.out.println("4.ABAJO");
+        System.out.println("5. SALIR\n");
+    }
+
+    private static void mostrarMenuPrincipal() {
+        System.out.println("\na. MOSTRAR ROBOT");
+        System.out.println("b. MOSTRAR OBJETOS DEL ROBOT");
+        System.out.println("c. MOVER ROBOT");
+        System.out.println("d. SALIR\n");
+    }
+
+    private static void mostrarDatosRobot(int robot, Robot[] robots) {
+        robots[robot].mostrarRobot();
+    }
+
+    private static void mostrarMenuObjetosRobot() {
+        System.out.println("\np (peso)");
+        System.out.println("v (volumen)");
+        System.out.println("a (area)\n");
     }
 }

@@ -7,7 +7,7 @@ public abstract class Objeto {
     private float peso;
 
     //Constructores
-    Objeto(int posX, int posY, float peso) {
+    Objeto(int posY, int posX, float peso) {
         this.posX = posX;
         this.posY = posY;
         this.peso = peso;

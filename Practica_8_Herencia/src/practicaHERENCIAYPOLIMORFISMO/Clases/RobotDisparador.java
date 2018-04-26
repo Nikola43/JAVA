@@ -10,8 +10,8 @@ public class RobotDisparador extends Robot implements IMovible, IDisparable {
     private int numeroDisparosAcertados;
 
     //Constructores
-    public RobotDisparador(int posX, int posY, int distanciaDisparo, char posicionDisparo) {
-        super(posX, posY);
+    public RobotDisparador(int posY, int posX, int distanciaDisparo, char posicionDisparo) {
+        super(posY, posX);
         this.distanciaDisparo = distanciaDisparo;
         this.posicionDisparo = posicionDisparo;
     }

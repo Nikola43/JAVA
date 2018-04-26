@@ -9,25 +9,23 @@ public abstract class Robot implements IMovible {
     private int posY;
 
     //Constructores
-    Robot(int posX, int posY){
-        this.posX = posX;
+    Robot(int posY, int posX){
         this.posY = posY;
+        this.posX = posX;
     }
 
     Robot(Robot robotCopia){
-        this.posX = robotCopia.posX;
         this.posY = robotCopia.posY;
+        this.posX = robotCopia.posX;
     }
 
     //Metodos consultores
-    public int getPosX() {
-        return posX;
-    }
-
     public int getPosY() {
         return posY;
     }
-
+    public int getPosX() {
+        return posX;
+    }
     public int getNumeroRobots() {
         return numeroRobots;
     }

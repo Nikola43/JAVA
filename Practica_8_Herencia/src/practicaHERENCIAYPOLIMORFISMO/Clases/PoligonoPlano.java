@@ -6,8 +6,8 @@ public class PoligonoPlano extends Objeto {
     private float apotema;
 
     //Constructores
-    public PoligonoPlano(int posX, int posY, float peso, float perimetro, float apotema) {
-        super(posX, posY, peso);
+    public PoligonoPlano(int posY, int posX, float peso, float perimetro, float apotema) {
+        super(posY, posX, peso);
         this.perimetro = perimetro;
         this.apotema = apotema;
     }
