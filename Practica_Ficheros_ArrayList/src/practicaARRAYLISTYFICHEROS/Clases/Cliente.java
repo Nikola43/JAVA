@@ -7,8 +7,9 @@ heredado de la clase Object. Los objetos de esta clase deben poder guardarse en 
  */
 
 import java.io.Serializable;
+import java.util.Comparator;
 
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
     //Atributos
     private String DNI;
     private String nombre;
