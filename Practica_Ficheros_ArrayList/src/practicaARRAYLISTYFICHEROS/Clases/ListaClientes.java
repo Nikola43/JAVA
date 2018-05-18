@@ -79,8 +79,7 @@ public class ListaClientes {
         if (!esCliente(cliente.getDNI())) {
             listaClientes.add(cliente);
 
-            //Ordenar
-            //listaClientes.sort(cliente);
+
 
             resultado = true;
         }
