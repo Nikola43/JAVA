@@ -27,15 +27,20 @@ public class Main {
         vehiculosParaInsertarEnFichero.add(new Vehiculo("DFGDF-35", "DCF-5", 6, true));
         vehiculosParaInsertarEnFichero.add(new Vehiculo("DFGDF-36", "DCF-6", 6, true));
 
+        System.out.println("Insertando datos....");
+
         //Escribimos en el fichero
         if(escribirDatosFichero(vehiculosParaInsertarEnFichero))
             System.out.println("Se ha insertado correctamente\n");
         else
             System.err.println("No se ha podido insertar en el fichero\n");
 
+        System.out.println("Leyendo datos....");
         //Leemos desde fichero
-        leerFichero("Fichero.dat");
+        vehiculosLeidosDesdeFichero = leerFichero("Fichero.dat");
 
+        //Mostramos
+        mostrarListaVehiculos(vehiculosLeidosDesdeFichero);
     }
 
     private static boolean escribirDatosFichero(ArrayList<Vehiculo> vehiculos) {
@@ -91,11 +96,12 @@ public class Main {
         return resultado;
     }
 
-    private static void leerFichero(String fichero) {
+    private static ArrayList<Vehiculo> leerFichero(String fichero) {
         //Para leer
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
         Vehiculo vehiculoAux;
+        ArrayList<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
 
         try {
             fileInputStream = new FileInputStream(fichero);
@@ -108,8 +114,7 @@ public class Main {
         try {
             while (true) {
                 vehiculoAux = (Vehiculo) objectInputStream.readObject();
-                System.out.println("--------------------------------------");
-                System.out.println(vehiculoAux.toString());
+                listaVehiculos.add(vehiculoAux);
             }
         } catch (EOFException e) {
             System.err.println("ERROR I/O: Fin de fichero");
@@ -124,6 +129,14 @@ public class Main {
                     e.printStackTrace();
                 }
             }
+        }
+        return listaVehiculos;
+    }
+
+    public static void mostrarListaVehiculos(ArrayList<Vehiculo> listaVehiculos){
+        for (Vehiculo vehiculoActual: listaVehiculos) {
+            System.out.println("--------------------------------------");
+            System.out.println(vehiculoActual.toString());
         }
     }
 }
