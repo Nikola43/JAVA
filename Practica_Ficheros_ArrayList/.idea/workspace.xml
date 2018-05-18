@@ -22,8 +22,22 @@
       <file leaf-file-name="ListaClientes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3960">
-              <caret line="200" selection-start-line="200" selection-end-line="200" />
+            <state relative-caret-position="115">
+              <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#10429#10430#0" expanded="true" />
+                <element signature="e#10471#10472#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RentACar.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,11 +45,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListaVehiculos.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Alquiler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="740">
+              <caret line="59" column="44" selection-start-line="51" selection-start-column="8" selection-end-line="59" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cliente.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Cliente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+              <folding>
+                <element signature="method#Cliente#0;class#Cliente#0" />
+                <element signature="method#Cliente#1;class#Cliente#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListaVehiculos.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
+            <state relative-caret-position="785">
+              <caret line="278" column="29" selection-start-line="278" selection-start-column="29" selection-end-line="278" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#10753#10754#0" expanded="true" />
+                <element signature="e#10796#10797#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,8 +110,9 @@
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Cliente.java" />
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/PreguntasProfesor.txt" />
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/MiObjectOutputStream.java" />
-        <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java" />
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java" />
+        <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java" />
+        <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java" />
       </list>
     </option>
   </component>
@@ -109,6 +154,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,7 +191,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
@@ -245,26 +290,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16614583" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49947533" visible="true" weight="0.16614583" />
+      <window_info anchor="right" id="Structure" order="8" sideWeight="0.50052464" side_tool="true" visible="true" weight="0.16614583" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -282,6 +328,63 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3500">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Interfaces/IAlquilable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="59" column="44" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="59" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3640">
+          <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3960">
+          <caret line="200" selection-start-line="200" selection-end-line="200" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4000">
@@ -303,10 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="46" column="71" selection-start-line="46" selection-start-column="71" selection-end-line="46" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#1773#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -325,22 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1220">
           <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#4316#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1769#1770#0" expanded="true" />
-            <element signature="e#1803#1804#0" expanded="true" />
-            <element signature="e#1851#1852#0" expanded="true" />
-            <element signature="e#1895#1896#0" expanded="true" />
-            <element signature="e#1944#1945#0" expanded="true" />
-            <element signature="e#1989#1990#0" expanded="true" />
-            <element signature="e#2037#2038#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2149#2150#0" expanded="true" />
-            <element signature="e#2195#2196#0" expanded="true" />
-            <element signature="e#4269#4270#0" expanded="true" />
-            <element signature="e#4310#4311#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -359,9 +442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#483#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -370,14 +450,7 @@
         <state relative-caret-position="160">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
-            <element signature="e#0#1450#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-            <element signature="e#1710#1711#0" expanded="true" />
-            <element signature="e#1775#1776#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1886#1887#0" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -386,10 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="46" column="71" selection-start-line="46" selection-start-column="71" selection-end-line="46" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#1773#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -408,22 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1220">
           <caret line="86" column="22" lean-forward="true" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#4316#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1769#1770#0" expanded="true" />
-            <element signature="e#1803#1804#0" expanded="true" />
-            <element signature="e#1851#1852#0" expanded="true" />
-            <element signature="e#1895#1896#0" expanded="true" />
-            <element signature="e#1944#1945#0" expanded="true" />
-            <element signature="e#1989#1990#0" expanded="true" />
-            <element signature="e#2037#2038#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2149#2150#0" expanded="true" />
-            <element signature="e#2195#2196#0" expanded="true" />
-            <element signature="e#4269#4270#0" expanded="true" />
-            <element signature="e#4310#4311#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -442,9 +495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#483#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -453,26 +503,12 @@
         <state relative-caret-position="160">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
-            <element signature="e#0#1450#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-            <element signature="e#1710#1711#0" expanded="true" />
-            <element signature="e#1775#1776#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1886#1887#0" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases.java" />
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Interfaces/IAlquilable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -484,9 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#483#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -505,22 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="e#0#4316#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1769#1770#0" expanded="true" />
-            <element signature="e#1803#1804#0" expanded="true" />
-            <element signature="e#1851#1852#0" expanded="true" />
-            <element signature="e#1895#1896#0" expanded="true" />
-            <element signature="e#1944#1945#0" expanded="true" />
-            <element signature="e#1989#1990#0" expanded="true" />
-            <element signature="e#2037#2038#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2149#2150#0" expanded="true" />
-            <element signature="e#2195#2196#0" expanded="true" />
-            <element signature="e#4269#4270#0" expanded="true" />
-            <element signature="e#4310#4311#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,10 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
           <caret line="46" column="71" selection-start-line="46" selection-start-column="71" selection-end-line="46" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#1773#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -542,13 +555,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/MiObjectOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="59" column="44" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="59" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="200">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Interfaces/IAlquilable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -563,27 +580,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/MiObjectOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3960">
-          <caret line="200" selection-start-line="200" selection-end-line="200" />
+        <state relative-caret-position="115">
+          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#10429#10430#0" expanded="true" />
+            <element signature="e#10471#10472#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
+        <state relative-caret-position="785">
+          <caret line="278" column="29" selection-start-line="278" selection-start-column="29" selection-end-line="278" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10753#10754#0" expanded="true" />
+            <element signature="e#10796#10797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="59" column="44" selection-start-line="51" selection-start-column="8" selection-end-line="59" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -55,12 +55,14 @@ public class ListaClientes {
         long longitudArrayClientesInicial = 0;
         long longitudArrayClientesFinal = 0;
 
-        if (ficheroClientes.exists() || ficheroClientes.length() < 1) {
+        if (!ficheroClientes.exists() || ficheroClientes.length() < 1) {
+            System.out.println("El fichero no existe o esta vacio");
+        } else {
             //Calculamos el peso del fichero
             longitudArrayClientesInicial = listaClientes.size();
 
             //Introducimos los datos del fichero en el arraylist
-
+            introduceDatosEnArray(nombreFichero);
 
             //Comprobamos si se pudo guardar el fichero en el arraylist
             longitudArrayClientesFinal = listaClientes.size();
@@ -68,11 +70,10 @@ public class ListaClientes {
                 System.out.println("Se han insertado los clientes correctamente");
             else
                 System.err.println("No se ha podido insertar los clientes");
-        } else
-            listaClientes = new ArrayList<>();
+        }
     }
 
-    private boolean darAltaCliente(Cliente cliente) {
+    public boolean darAltaCliente(Cliente cliente) {
         boolean resultado = false;
 
         if (!esCliente(cliente.getDNI())) {
@@ -87,7 +88,7 @@ public class ListaClientes {
         return resultado;
     }
 
-    private boolean darBajaCliente(Cliente cliente) {
+    public boolean darBajaCliente(Cliente cliente) {
         boolean resultado = false;
         ArrayList<Cliente> aux = new ArrayList<>();
         Iterator<Cliente> itr = listaClientes.iterator();
@@ -115,7 +116,7 @@ public class ListaClientes {
         return resultado;
     }
 
-    private boolean esCliente(String dniCliente) {
+    public boolean esCliente(String dniCliente) {
         boolean resultado = false;
         Iterator<Cliente> itr = listaClientes.iterator();
 
@@ -137,6 +138,52 @@ public class ListaClientes {
         return texto;
     }
 
+    public void introduceDatosEnArray(String nombreFichero){
+        File fichero = new File(nombreFichero);
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        Cliente clienteAux = null;
+        long longitudArrayClienteInicial = 0;
+        long longitudArrayClienteFinal = 0;
+
+        try {
+            fileInputStream = new FileInputStream(fichero);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+
+            try {
+                clienteAux = (Cliente) objectInputStream.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            while ( clienteAux != null){
+                listaClientes.add(clienteAux);
+                clienteAux = (Cliente) objectInputStream.readObject();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        finally {
+            //Cerramos el fichero
+            if (objectInputStream != null){
+                try {
+                    objectInputStream.close();
+                    fileInputStream.close();
+                } catch (IOException e) {
+                    System.err.println("Error I/O: No se pudo leer del fichero");
+                    e.printStackTrace();
+                }
+            }
+
+            //Comprobamos si se pudo guardar el fichero en el arraylist
+            longitudArrayClienteFinal = listaClientes.size();
+            if (longitudArrayClienteFinal > longitudArrayClienteInicial)
+                System.out.println("Se han insertado los clientes correctamente");
+            else
+                System.err.println("No se ha podido insertar los clientes");
+
+        }
+    }
+
     public void mueveDatosAFichero(String nombreFichero) {
 
         File fichero = new File(nombreFichero);
@@ -155,10 +202,9 @@ public class ListaClientes {
         } catch (IOException e) {
             System.err.println("Error I/O: No se pudo abrir el fichero");
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             //Cerramos el fichero
-            if (objectOutputStream != null){
+            if (objectOutputStream != null) {
                 try {
                     objectOutputStream.close();
                     fileOutputStream.close();
@@ -176,19 +222,18 @@ public class ListaClientes {
                 System.err.println("No se ha podido crear el fichero");
             else if (fichero.exists() && fichero.length() < 1)
                 System.err.println("El fichero se ha creado pero no se ha podido escribir en el");
-            else if (fichero.exists() && fichero.length() < 1)
+            else if (fichero.exists() && fichero.length() > 0)
                 System.err.println("El fichero se ha creado y se han insertado los datos correctamente");
         }
     }
 
-    public Cliente getCliente(String dniCliente){
-        boolean resultado = false;
+    public Cliente getCliente(String dniCliente) {
         Cliente clienteActual = null;
         Cliente clienteDevuelto = null;
         Iterator<Cliente> itr = null;
 
         //Si el cliente existe
-        if (esCliente(dniCliente)){
+        if (esCliente(dniCliente)) {
             listaClientes.iterator();
             while (itr.hasNext()) {
                 clienteActual = itr.next();
@@ -199,7 +244,7 @@ public class ListaClientes {
         return clienteDevuelto;
     }
 
-    public void buscarYMostrarCliente(String dniCliente){
+    public void buscarYMostrarCliente(String dniCliente) {
         //Si el cliente existe
         if (getCliente(dniCliente) != null)
             System.out.println(getCliente(dniCliente).toString());
@@ -207,13 +252,14 @@ public class ListaClientes {
             System.out.println("No se encuentra el cliente");
     }
 
-    public void listarClientes(){
+    public void listarClientes() {
         for (int i = 0; i < listaClientes.size(); i++) {
-            System.out.println("-------------------------> Cliente Nº: "+i+" <----------------------------");
+            System.out.println("-------------------------> Cliente Nº: " + i + " <----------------------------");
             System.out.println(listaClientes.get(i).toString());
-            System.out.println("---------------------------------------------------------\n");
+            System.out.println("--------------------------------------------------------------------------\n");
         }
     }
-
-
+    public int size(){
+        return listaClientes.size();
+    }
 }
