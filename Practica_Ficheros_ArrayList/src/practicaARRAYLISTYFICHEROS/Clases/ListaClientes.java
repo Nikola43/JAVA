@@ -149,11 +149,8 @@ public class ListaClientes {
             fileInputStream = new FileInputStream(fichero);
             objectInputStream = new ObjectInputStream(fileInputStream);
 
-            try {
-                clienteAux = (Cliente) objectInputStream.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+
+            clienteAux = (Cliente) objectInputStream.readObject();
             while ( clienteAux != null){
                 listaClientes.add(clienteAux);
                 clienteAux = (Cliente) objectInputStream.readObject();

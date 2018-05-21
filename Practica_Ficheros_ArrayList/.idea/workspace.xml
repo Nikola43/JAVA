@@ -19,47 +19,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ListaClientes.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RentACar.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RentACar.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+            <state relative-caret-position="418">
+              <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Alquiler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cliente.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Cliente.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
-              <folding>
-                <element signature="method#Cliente#0;class#Cliente#0" expanded="false" />
-                <element signature="method#Cliente#1;class#Cliente#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -96,8 +61,8 @@
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/PreguntasProfesor.txt" />
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/MiObjectOutputStream.java" />
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java" />
-        <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java" />
         <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java" />
+        <option value="$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java" />
       </list>
     </option>
   </component>
@@ -150,8 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -189,7 +152,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,6 +317,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding>
+            <element signature="method#Cliente#0;class#Cliente#0" expanded="false" />
+            <element signature="method#Cliente#1;class#Cliente#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -411,7 +395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -649,13 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Vehiculo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Furgoneta.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -670,11 +646,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/MiObjectOutputStream.java" />
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Interfaces/IAlquilable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="151" column="12" lean-forward="false" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/PreguntasProfesor.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -689,37 +689,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java" />
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Alquiler.java">
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/Vehiculo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="-483">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaVehiculos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="271" column="18" lean-forward="false" selection-start-line="271" selection-start-column="12" selection-end-line="271" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/MiObjectOutputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/RentACar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/Clases/ListaClientes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/practicaARRAYLISTYFICHEROS/PreguntasProfesor.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="418">
+          <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
           <folding />
         </state>
       </provider>

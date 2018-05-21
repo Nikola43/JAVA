@@ -1,8 +1,7 @@
 package practicaARRAYLISTYFICHEROS.Clases;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.ArrayList;
 
 /*
 RentACar: contiene como atributos el nombre de la empresa de Rent a Car, un objeto tipo
@@ -77,16 +76,16 @@ public class RentACar {
     private String nombreEmpresa;
     private ListaClientes listaClientes;
     private ListaVehiculos listaVehiculos;
-    private Alquiler alquiler;
+    private ArrayList<Alquiler> alquileres;
 
     //Constructores
-    public RentACar(String nombreEmpresa){
+    public RentACar(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
-        //listaClientes = new ListaClientes();
+        alquileres = new ArrayList<>();
     }
 
     //Metodos añadidos
-    public void creaCliente(){
+    public void creaCliente() {
         String dni = null, nombre = null, apellidos = null;
         boolean resultado;
 
@@ -110,8 +109,54 @@ public class RentACar {
             System.out.println("No se ha introducido el cliente");
     }
 
-    public void borrarCliente(){
+    public void borrarCliente() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
+    }
+
+    public void insertaAlquileresDelFichero() {
+        //Para leer
+        File fichero;
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        Alquiler alquilerAux;
+        int longitudAlquileresInicial = 0;
+        int longitudAlquileresFinal = 0;
+
+
+        fichero = new File("alquileres.dat");
+        longitudAlquileresInicial = alquileres.size();
+
+        if (!fichero.exists()) {
+            System.out.println("El fichero no existe");
+        } else {
+            try {
+                fileInputStream = new FileInputStream(fichero);
+                objectInputStream = new ObjectInputStream(fileInputStream);
+
+                alquilerAux = (Alquiler) objectInputStream.readObject();
+                while (alquilerAux != null) {
+                    alquileres.add(alquilerAux);
+                    alquilerAux = (Alquiler) objectInputStream.readObject();
+                }
+            } catch (EOFException e) {
+                System.err.println("ERROR I/O: Fin de fichero");
+            } catch (ClassNotFoundException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (objectInputStream != null) {
+                    try {
+                        objectInputStream.close();
+                        fileInputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                longitudAlquileresFinal = alquileres.size();
+
+                if (longitudAlquileresFinal > longitudAlquileresInicial)
+                    System.out.println("Se ha insertado correctamente");
+            }
+        }
     }
 }
