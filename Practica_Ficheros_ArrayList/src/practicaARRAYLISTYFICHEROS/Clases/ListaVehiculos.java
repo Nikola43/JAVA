@@ -48,8 +48,8 @@ public class ListaVehiculos {
     private ArrayList<Vehiculo> listaVehiculos;
 
     //Constructores
-    public ListaVehiculos(String nombreFichero) {
-        File ficheroVehiculos = new File(nombreFichero);
+    public ListaVehiculos() {
+        File ficheroVehiculos = new File("vehiculos.dat");
         long longitudArrayVehiculoInicial = 0;
         long longitudArrayVehiculoFinal = 0;
 
@@ -60,7 +60,7 @@ public class ListaVehiculos {
             longitudArrayVehiculoInicial = listaVehiculos.size();
 
             //Introducimos los datos del fichero en el arraylist
-            introduceDatosEnArray(nombreFichero);
+            introduceDatosEnArray("vehiculos.dat");
 
             //Comprobamos si se pudo guardar el fichero en el arraylist
             longitudArrayVehiculoFinal = listaVehiculos.size();

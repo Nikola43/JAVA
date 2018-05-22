@@ -9,6 +9,6 @@ package practicaARRAYLISTYFICHEROS.Interfaces;
 import practicaARRAYLISTYFICHEROS.Clases.Vehiculo;
 
 public interface IAltasYBajas {
-    boolean alta(Vehiculo vehiculo);
-    boolean baja(String identificador);
+    boolean alta(Object obj);
+    boolean baja(Object obj);
 }

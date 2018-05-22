@@ -82,6 +82,9 @@ public class RentACar {
     public RentACar(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
         alquileres = new ArrayList<>();
+        listaClientes = new ListaClientes();
+        listaVehiculos = new ListaVehiculos();
+
     }
 
     //Metodos añadidos

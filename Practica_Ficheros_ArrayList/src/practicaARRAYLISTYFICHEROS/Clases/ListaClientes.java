@@ -42,16 +42,19 @@ existe en la aplicación. (0.25 puntos)
 la aplicación. Es necesario el uso de iteradores para recorrer el arrayList. (0.25 puntos)
  */
 
+import practicaARRAYLISTYFICHEROS.Interfaces.IAlquilable;
+import practicaARRAYLISTYFICHEROS.Interfaces.IAltasYBajas;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ListaClientes {
+public class ListaClientes implements IAltasYBajas{
     //Atributos
     private ArrayList<Cliente> listaClientes;
 
-    public ListaClientes(String nombreFichero) {
-        File ficheroClientes = new File(nombreFichero);
+    public ListaClientes() {
+        File ficheroClientes = new File("clientes.dat");
         long longitudArrayClientesInicial = 0;
         long longitudArrayClientesFinal = 0;
 
@@ -62,7 +65,7 @@ public class ListaClientes {
             longitudArrayClientesInicial = listaClientes.size();
 
             //Introducimos los datos del fichero en el arraylist
-            introduceDatosEnArray(nombreFichero);
+            introduceDatosEnArray("clientes.dat");
 
             //Comprobamos si se pudo guardar el fichero en el arraylist
             longitudArrayClientesFinal = listaClientes.size();
@@ -73,12 +76,11 @@ public class ListaClientes {
         }
     }
 
-    public boolean darAltaCliente(Cliente cliente) {
+    public boolean alta(Object cliente) {
         boolean resultado = false;
 
-        if (!esCliente(cliente.getDNI())) {
-            listaClientes.add(cliente);
-
+        if (!esCliente(((Cliente) cliente).getDNI())) {
+            listaClientes.add((Cliente) cliente);
 
 
             resultado = true;
@@ -87,7 +89,7 @@ public class ListaClientes {
         return resultado;
     }
 
-    public boolean darBajaCliente(Cliente cliente) {
+    public boolean baja(Object cliente) {
         boolean resultado = false;
         ArrayList<Cliente> aux = new ArrayList<>();
         Iterator<Cliente> itr = listaClientes.iterator();
@@ -95,13 +97,13 @@ public class ListaClientes {
         int longitudListaClientesInicial;
         int longitudListaClientesFinal;
 
-        if (esCliente(cliente.getDNI())) {
+        if (esCliente(((Cliente) cliente).getDNI())) {
 
             longitudListaClientesInicial = listaClientes.size();
             //Metemos en el array todos los elementos menos el que queremos borrar
             while (itr.hasNext()) {
                 clienteAux = itr.next();
-                if (!clienteAux.getDNI().equals(cliente.getDNI())) {
+                if (!clienteAux.getDNI().equals(((Cliente) cliente).getDNI())) {
                     aux.add(clienteAux);
                 }
             }
